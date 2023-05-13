@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YourLocalization.Domain.Model;
-using Type = YourLocalization.Domain.Model.Type;
 
 namespace YourLocalization.Infrastructure
 {
@@ -18,7 +17,7 @@ namespace YourLocalization.Infrastructure
         public DbSet<Point> Points { get; set; }
         public DbSet<PointTag> PointTag { get; set; }
         public DbSet<Tag> Tags { get; set; }
-        public DbSet<Type> Types { get; set; }
+        public DbSet<YourLocalization.Domain.Model.Type> Types { get; set; }
         public DbSet<User> Users { get; set; }
         public Context(DbContextOptions options) : base(options)
         {

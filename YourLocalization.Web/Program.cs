@@ -1,7 +1,12 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using YourLocalization.Application;
 using YourLocalization.Application.Interfaces;
+using YourLocalization.Application.Services;
+using YourLocalization.Domain.Interface;
 using YourLocalization.Infrastructure;
+using YourLocalization.Infrastructure.Repositoriees;
+using YourLocalization.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,9 +18,13 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<Context>();
+
+builder.Services.AddApplication();
+builder.Services.AddInfrastructure();
+
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddTransient<IPointService, IPointService>();
+builder.Services.AddTransient<IPointService, PointService>();
 
 var app = builder.Build();
 
