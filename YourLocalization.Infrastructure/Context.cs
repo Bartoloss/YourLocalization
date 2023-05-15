@@ -11,14 +11,13 @@ using YourLocalization.Domain.Model;
 
 namespace YourLocalization.Infrastructure
 {
-    public class Context : IdentityDbContext
+    public class Context : IdentityDbContext<User>
     {
         public DbSet<AddressDetail> AddressDetails { get; set; }
         public DbSet<Point> Points { get; set; }
         public DbSet<PointTag> PointTag { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<YourLocalization.Domain.Model.Type> Types { get; set; }
-        public DbSet<User> Users { get; set; }
         public Context(DbContextOptions options) : base(options)
         {
         }

@@ -11,6 +11,6 @@ namespace YourLocalization.Application.Interfaces
     {
         ListUserForListVm GetAllUsersForList();
         int AddUser(NewUserVm user);
-        UserDetailsVm GetUserDetails(int customerId);
+        UserDetailsVm GetUserDetails(string customerId);
     }
 }

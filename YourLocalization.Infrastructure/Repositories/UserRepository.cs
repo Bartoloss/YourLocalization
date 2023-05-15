@@ -21,9 +21,10 @@ namespace YourLocalization.Infrastructure.Repositories
             return _context.Users.Where(p => p.IsActive);
         }
 
-        public User? GetUser(int userId)
+        public User? GetUser(string userId)
         {
             return _context.Users.FirstOrDefault(p => p.Id == userId);
         }
+
     }
 }

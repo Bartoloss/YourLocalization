@@ -10,6 +10,6 @@ namespace YourLocalization.Domain.Interface
     public interface IUserRepository
     {
         IQueryable<User> GetAllActiveUsers();
-        User GetUser(int userId);  
+        User GetUser(string userId);  
     }
 }

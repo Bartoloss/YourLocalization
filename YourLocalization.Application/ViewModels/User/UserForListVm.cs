@@ -10,7 +10,7 @@ namespace YourLocalization.Application.ViewModels.User
 {
     public class UserForListVm : IMapFrom<YourLocalization.Domain.Model.User>
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         

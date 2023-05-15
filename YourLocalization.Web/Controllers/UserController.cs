@@ -25,7 +25,7 @@ namespace YourLocalization.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult AddCustomer() //metoda ta będzie zwracać pusty formularz który użytkownik będzie musiał wypełnić
+        public IActionResult AddUser() //metoda ta będzie zwracać pusty formularz który użytkownik będzie musiał wypełnić
         {
             return View();
         }
@@ -49,7 +49,7 @@ namespace YourLocalization.Web.Controllers
         //    return View();
         //}
 
-        public IActionResult ViewCustomer(int userId)
+        public IActionResult ViewUser(string userId)
         {
             var userModel = _userService.GetUserDetails(userId);
             return View(userModel);
