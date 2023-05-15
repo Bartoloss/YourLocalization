@@ -11,7 +11,7 @@ namespace YourLocalization.Application.ViewModels.User
 {
     public class UserDetailsVm : IMapFrom<YourLocalization.Domain.Model.User>
     {
-        public  int Id { get; set; }
+        public int Id { get; set; }
         public string FirstAndLastName { get; set; }
         public string Email { get; set; }
         public List<AddressForListVm> Addresses { get; set; }

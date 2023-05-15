@@ -49,10 +49,10 @@ namespace YourLocalization.Web.Controllers
         //    return View();
         //}
 
-        //public IActionResult ViewCustomer(int userId)
-        //{
-        //    var userModel = userService.GetUserDetails(userId);
-        //    return View(userModel);
-        //}
+        public IActionResult ViewCustomer(int userId)
+        {
+            var userModel = _userService.GetUserDetails(userId);
+            return View(userModel);
+        }
     }
 }
