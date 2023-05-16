@@ -12,7 +12,7 @@ using YourLocalization.Infrastructure;
 namespace YourLocalization.Infrastructure.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230515164546_InitialCreate")]
+    [Migration("20230516115055_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
