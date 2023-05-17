@@ -1,10 +1,10 @@
-﻿@model YourLocalization.Application.ViewModels.User.ListUserForListVm
+﻿@model YourLocalization.Application.ViewModels.Point.ListPointForListVm
 
 @{
-    ViewData["Title"] = "List of users";
+    ViewData["Title"] = "List of points";
 }
 
-<h1>Index</h1>
+<h1>IndexPoint</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -16,25 +16,25 @@
                 Id
             </th>
             <th>
-                FirstName
+                Name
             </th>
             <th>
-                LastName
+                Type
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Users) {
+@foreach (var item in Model.Points) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
+                @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LastName)
+                @Html.DisplayFor(modelItem => item.TypeId)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

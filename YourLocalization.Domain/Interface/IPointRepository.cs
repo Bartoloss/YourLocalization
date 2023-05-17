@@ -16,6 +16,8 @@ namespace YourLocalization.Domain.Interface
 
         IQueryable<Point> GetsPointsByTypeId(int typeId);
 
+        IQueryable<Point> GetAllPoints();
+
         Point? GetItemById(int pointId);
 
         IQueryable<Tag> GetAllTags();

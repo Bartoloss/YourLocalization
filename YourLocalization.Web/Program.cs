@@ -4,6 +4,7 @@ using YourLocalization.Application;
 using YourLocalization.Application.Interfaces;
 using YourLocalization.Application.Services;
 using YourLocalization.Domain.Interface;
+using YourLocalization.Domain.Model;
 using YourLocalization.Infrastructure;
 using YourLocalization.Infrastructure.Repositoriees;
 using YourLocalization.Infrastructure.Repositories;
@@ -16,7 +17,7 @@ builder.Services.AddDbContext<Context>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<Context>();
 
 builder.Services.AddApplication();

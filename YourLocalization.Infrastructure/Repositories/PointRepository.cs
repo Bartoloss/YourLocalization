@@ -40,6 +40,11 @@ namespace YourLocalization.Infrastructure.Repositoriees
             return points;
         }
 
+        public IQueryable<Point> GetAllPoints()
+        {
+            return _context.Points;
+        }
+
         public Point? GetItemById(int pointId)
         {
             return _context.Points.FirstOrDefault(i => i.Id == pointId);
