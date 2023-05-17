@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using YourLocalization.Application.Interfaces;
+using YourLocalization.Application.Services;
 
 namespace YourLocalization.Web.Controllers
 {
@@ -16,6 +17,11 @@ namespace YourLocalization.Web.Controllers
             var model = _pointService.GetAllPointsForList();
             return View(model);
         }
-        
+
+        public IActionResult ViewPoint(int pointId)
+        {
+            var pointModel = _pointService.GetPointDetails(pointId);
+            return View(pointModel);
+        }
     }
 }

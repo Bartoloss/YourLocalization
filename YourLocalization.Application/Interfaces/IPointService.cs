@@ -11,7 +11,7 @@ namespace YourLocalization.Application.Interfaces
     public interface IPointService
     {
         ListPointForListVm GetAllPointsForList();
-        int AddPoint(NewPointVm user);
-        PointDetailsVm GetPointDetails(string customerId);
+        int AddPoint(NewPointVm point);
+        PointDetailsVm GetPointDetails(int pointId);
     }
 }

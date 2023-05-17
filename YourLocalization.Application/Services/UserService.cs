@@ -41,9 +41,9 @@ namespace YourLocalization.Application.Services
             return usersForList;
         }
 
-        public UserDetailsVm GetUserDetails(string customerId)
+        public UserDetailsVm GetUserDetails(string userId)
         {
-            User user = _userRepo.GetUser(customerId);
+            User user = _userRepo.GetUser(userId);
             UserDetailsVm userVm = _mapper.Map<UserDetailsVm>(user);
             
             userVm.Addresses = new List<AddressForListVm>();

@@ -45,7 +45,7 @@ namespace YourLocalization.Infrastructure.Repositoriees
             return _context.Points;
         }
 
-        public Point? GetItemById(int pointId)
+        public Point? GetPointById(int pointId)
         {
             return _context.Points.FirstOrDefault(i => i.Id == pointId);
         }

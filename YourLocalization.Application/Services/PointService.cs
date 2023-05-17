@@ -9,6 +9,7 @@ using YourLocalization.Application.Interfaces;
 using YourLocalization.Application.ViewModels.Point;
 using YourLocalization.Application.ViewModels.User;
 using YourLocalization.Domain.Interface;
+using YourLocalization.Domain.Model;
 
 namespace YourLocalization.Application.Services
 {
@@ -24,7 +25,7 @@ namespace YourLocalization.Application.Services
         }
 
 
-        public int AddPoint(NewPointVm user)
+        public int AddPoint(NewPointVm point)
         {
             throw new NotImplementedException();
         }
@@ -41,9 +42,11 @@ namespace YourLocalization.Application.Services
             return pointsForList;
         }
 
-        public PointDetailsVm GetPointDetails(string customerId)
+        public PointDetailsVm GetPointDetails(int pointId)
         {
-            throw new NotImplementedException();
+            Point? point = _pointRepo.GetPointById(pointId);
+            PointDetailsVm pointVm = _mapper.Map<PointDetailsVm>(point);
+            return pointVm;
         }
     }
 }
