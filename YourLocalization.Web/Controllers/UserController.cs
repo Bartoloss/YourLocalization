@@ -21,7 +21,7 @@ namespace YourLocalization.Web.Controllers
         [HttpPost]
         public IActionResult Index(int pageSize, int? pageNo, string searchString)
         {
-            if (pageNo.HasValue)
+            if (!pageNo.HasValue)
             {
                 pageNo = 1;
             }

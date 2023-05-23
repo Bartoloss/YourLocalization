@@ -33,13 +33,13 @@ namespace YourLocalization.Application.Services
         {
             List<UserForListVm> users = _userRepo.GetAllActiveUsers().Where(p => p.FirstName.StartsWith(searchString) || p.LastName.StartsWith(searchString) || p.UserName.StartsWith(searchString))
                 .ProjectTo<UserForListVm>(_mapper.ConfigurationProvider).ToList();
-            var usersToShow = users.Skip(pageSize*(pageNo-1)).Take(pageSize).ToList();
+            List<UserForListVm> usersToShow = users.Skip(pageSize * (pageNo-1)).Take(pageSize).ToList();
             ListUserForListVm usersForList = new ListUserForListVm()
             {
-                PagePize = pageSize,
+                PageSize = pageSize,
                 CurrentPage = pageNo,
                 SearchString = searchString,
-                Users = users,
+                Users = usersToShow,
                 Count = users.Count
             };
             return usersForList;
