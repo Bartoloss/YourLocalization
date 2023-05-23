@@ -12,12 +12,14 @@ namespace YourLocalization.Web.Controllers
             _pointService = pointService;
         }
 
+        [HttpGet("points")]
         public IActionResult Index()
         {
             var model = _pointService.GetAllPointsForList();
             return View(model);
         }
 
+        [HttpGet("points/{pointId}")]
         public IActionResult ViewPoint(int pointId)
         {
             var pointModel = _pointService.GetPointDetails(pointId);

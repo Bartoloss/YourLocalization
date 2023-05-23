@@ -10,19 +10,30 @@ namespace YourLocalization.Web.Controllers
         {
             _userService = userService;
         }
+
+        [HttpGet("users")]
         public IActionResult Index()
         {
-            //utworzyć widok dla tej akcji
-            //w widoku będzie tabela z userów
-            //panel do filtrowania userów
-            //przygotować dane
-            //przekazać filtry do serwisu
-            //serwis musi przygotować dane
-            //serwis musi zwrócić dane do controlera w odpowiednim formacie
-
-            var model = _userService.GetAllUsersForList();
+            var model = _userService.GetAllUsersForList(2, 1, "");
             return View(model);
         }
+
+        [HttpPost]
+        public IActionResult Index(int pageSize, int? pageNo, string searchString)
+        {
+            if (pageNo.HasValue)
+            {
+                pageNo = 1;
+            }
+            if(searchString is null)
+            {
+                searchString = String.Empty;
+            }
+
+            var model = _userService.GetAllUsersForList(pageSize, pageNo.Value, searchString);
+            return View(model);
+        }
+
 
         [HttpGet]
         public IActionResult AddUser() //metoda ta będzie zwracać pusty formularz który użytkownik będzie musiał wypełnić
@@ -49,6 +60,7 @@ namespace YourLocalization.Web.Controllers
         //    return View();
         //}
 
+        [HttpGet("users/{userId}")]
         public IActionResult ViewUser(string userId)
         {
             var userModel = _userService.GetUserDetails(userId);
