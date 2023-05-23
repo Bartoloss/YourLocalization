@@ -18,7 +18,7 @@ namespace YourLocalization.Web.Controllers
             return View(model);
         }
 
-        [HttpPost]
+        [HttpPost("users")]
         public IActionResult Index(int pageSize, int? pageNo, string searchString)
         {
             if (!pageNo.HasValue)
