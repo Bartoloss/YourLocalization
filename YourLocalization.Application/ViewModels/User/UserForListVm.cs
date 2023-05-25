@@ -1,9 +1,4 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using YourLocalization.Application.Mapping;
 
 namespace YourLocalization.Application.ViewModels.User
@@ -13,7 +8,7 @@ namespace YourLocalization.Application.ViewModels.User
         public string Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        
+
         public void Mapping(Profile profile)
         {
             profile.CreateMap<YourLocalization.Domain.Model.User, UserForListVm>();

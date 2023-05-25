@@ -1,13 +1,9 @@
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using YourLocalization.Application;
 using YourLocalization.Application.Interfaces;
 using YourLocalization.Application.Services;
-using YourLocalization.Domain.Interface;
 using YourLocalization.Domain.Model;
 using YourLocalization.Infrastructure;
-using YourLocalization.Infrastructure.Repositoriees;
-using YourLocalization.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,7 +44,6 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
-
 
 app.MapControllerRoute(
     name: "default",

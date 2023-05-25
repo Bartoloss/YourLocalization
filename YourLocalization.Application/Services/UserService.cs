@@ -1,10 +1,5 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using YourLocalization.Application.Interfaces;
 using YourLocalization.Application.ViewModels.User;
 using YourLocalization.Domain.Interface;
@@ -23,7 +18,6 @@ namespace YourLocalization.Application.Services
             _mapper = mapper;
         }
 
-
         public int AddUser(NewUserVm user)
         {
             throw new NotImplementedException();
@@ -33,7 +27,7 @@ namespace YourLocalization.Application.Services
         {
             List<UserForListVm> users = _userRepo.GetAllActiveUsers().Where(p => p.FirstName.StartsWith(searchString) || p.LastName.StartsWith(searchString) || p.UserName.StartsWith(searchString))
                 .ProjectTo<UserForListVm>(_mapper.ConfigurationProvider).ToList();
-            List<UserForListVm> usersToShow = users.Skip(pageSize * (pageNo-1)).Take(pageSize).ToList();
+            List<UserForListVm> usersToShow = users.Skip(pageSize * (pageNo - 1)).Take(pageSize).ToList();
             ListUserForListVm usersForList = new ListUserForListVm()
             {
                 PageSize = pageSize,
@@ -49,9 +43,8 @@ namespace YourLocalization.Application.Services
         {
             User user = _userRepo.GetUser(userId);
             UserDetailsVm userVm = _mapper.Map<UserDetailsVm>(user);
-            
-            userVm.Addresses = new List<AddressForListVm>();
 
+            userVm.Addresses = new List<AddressForListVm>();
 
             foreach (AddressDetail address in user.Adresses)
             {

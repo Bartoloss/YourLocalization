@@ -1,13 +1,7 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using YourLocalization.Application.Interfaces;
 using YourLocalization.Application.ViewModels.Point;
-using YourLocalization.Application.ViewModels.User;
 using YourLocalization.Domain.Interface;
 using YourLocalization.Domain.Model;
 
@@ -23,7 +17,6 @@ namespace YourLocalization.Application.Services
             _pointRepo = pointRepo;
             _mapper = mapper;
         }
-
 
         public int AddPoint(NewPointVm point)
         {

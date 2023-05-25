@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using YourLocalization.Application.Interfaces;
-using YourLocalization.Application.Services;
 
 namespace YourLocalization.Web.Controllers
 {
     public class PointController : Controller
     {
         private readonly IPointService _pointService;
+
         public PointController(IPointService pointService)
         {
             _pointService = pointService;
