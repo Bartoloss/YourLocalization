@@ -51,8 +51,9 @@ namespace YourLocalization.Application.Services
             UserDetailsVm userVm = _mapper.Map<UserDetailsVm>(user);
             
             userVm.Addresses = new List<AddressForListVm>();
-            
-            foreach(AddressDetail address in user.Adresses)
+
+
+            foreach (AddressDetail address in user.Adresses)
             {
                 AddressForListVm newAddress = new AddressForListVm()
                 {

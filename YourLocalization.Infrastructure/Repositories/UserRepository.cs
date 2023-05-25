@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,7 @@ namespace YourLocalization.Infrastructure.Repositories
 
         public User GetUser(string userId)
         {
-            return _context.Users.First(p => p.Id == userId);
+            return _context.Users.Include(x => x.Adresses).First(p => p.Id == userId);
         }
 
     }

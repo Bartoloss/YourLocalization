@@ -7,7 +7,7 @@
 <h1>ViewUser</h1>
 
 <div>
-    <h4>UserDetailsVm</h4>
+    <h4>Details of user with ID=@Html.DisplayFor(model => model.Id)</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -28,8 +28,70 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Email)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Addresses)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Addresses)
+        </dd>
+
     </dl>
 </div>
+
+<div class="row">
+    <table class="table">
+        <tbody>
+            @foreach (var address in Model.Addresses)
+            {
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(x => address.NameAddress)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(x => address.NameAddress)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(x => address.Street)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(x => address.Street)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(x => address.BuildingNumber)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(x => address.BuildingNumber)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(x => address.FlatNumber)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(x => address.FlatNumber)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(x => address.City)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(x => address.City)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(x => address.ZipCode)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(x => address.ZipCode)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(x => address.Country)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(x => address.Country)
+                </dd>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
 <div>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     <a asp-action="Index">Back to List</a>

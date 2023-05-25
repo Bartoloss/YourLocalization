@@ -11,6 +11,7 @@ namespace YourLocalization.Application.ViewModels.Point
 {
     public class PointDetailsVm : IMapFrom<YourLocalization.Domain.Model.Point>
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public int TypeId { get; set; }
         public string Street { get; set; }

@@ -30,13 +30,17 @@ namespace YourLocalization.Application.Services
             throw new NotImplementedException();
         }
 
-        public ListPointForListVm GetAllPointsForList()
+        public ListPointForListVm GetAllPointsForList(int pageSize, int pageNo, string searchString)
         {
-            List<PointForListVm> points = _pointRepo.GetAllPoints()
+            List<PointForListVm> points = _pointRepo.GetAllPoints().Where(p => p.Name.StartsWith(searchString))
                .ProjectTo<PointForListVm>(_mapper.ConfigurationProvider).ToList();
+            List<PointForListVm> pointsToShow = points.Skip(pageSize * (pageNo - 1)).Take(pageSize).ToList();
             ListPointForListVm pointsForList = new ListPointForListVm()
             {
-                Points = points,
+                PageSize = pageSize,
+                CurrentPage = pageNo,
+                SearchString = searchString,
+                Points = pointsToShow,
                 Count = points.Count
             };
             return pointsForList;

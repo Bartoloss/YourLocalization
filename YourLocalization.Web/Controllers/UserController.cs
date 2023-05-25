@@ -60,7 +60,7 @@ namespace YourLocalization.Web.Controllers
         //    return View();
         //}
 
-        [HttpGet("users/{userId}")]
+        [HttpGet("user/details/{userId}")]
         public IActionResult ViewUser(string userId)
         {
             var userModel = _userService.GetUserDetails(userId);
