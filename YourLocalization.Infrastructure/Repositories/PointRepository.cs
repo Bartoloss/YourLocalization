@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using YourLocalization.Domain.Interface;
+﻿using YourLocalization.Domain.Interface;
 using YourLocalization.Domain.Model;
 using Type = YourLocalization.Domain.Model.Type;
 
@@ -12,6 +7,7 @@ namespace YourLocalization.Infrastructure.Repositoriees
     public class PointRepository : IPointRepository
     {
         private readonly Context _context;
+
         public PointRepository(Context context)
         {
             _context = context;

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YourLocalization.Web", "YourLocalization.Web\YourLocalization.Web.csproj", "{61EAB8ED-D95B-422F-B129-1CF0C03F313E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YourLocalization.Web", "YourLocalization.Web\YourLocalization.Web.csproj", "{61EAB8ED-D95B-422F-B129-1CF0C03F313E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{555B1C7A-09E8-41E7-846F-82E9459B41CB}"
 EndProject
@@ -15,13 +15,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{F4E2AC16-C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{0D568C66-FF9C-44DE-9E04-861DB244A982}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YourLocalization.Application", "YourLocalization.Application\YourLocalization.Application.csproj", "{37EC6530-DAAB-4FD8-95EA-9A5203DEAB88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YourLocalization.Application", "YourLocalization.Application\YourLocalization.Application.csproj", "{37EC6530-DAAB-4FD8-95EA-9A5203DEAB88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YourLocalization.Domain", "YourLocalization.Domain\YourLocalization.Domain.csproj", "{CE40AD89-F01A-46AB-B5E2-1BFCA148A46E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YourLocalization.Domain", "YourLocalization.Domain\YourLocalization.Domain.csproj", "{CE40AD89-F01A-46AB-B5E2-1BFCA148A46E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YourLocalization.Infrastructure", "YourLocalization.Infrastructure\YourLocalization.Infrastructure.csproj", "{86CE37AE-AA91-472F-A5D7-3877B74663F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YourLocalization.Infrastructure", "YourLocalization.Infrastructure\YourLocalization.Infrastructure.csproj", "{86CE37AE-AA91-472F-A5D7-3877B74663F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YourLocalization.Test", "YourLocalization.Test\YourLocalization.Test.csproj", "{87DE9E22-8E85-44B1-BE8F-3C076FD425A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YourLocalization.Test", "YourLocalization.Test\YourLocalization.Test.csproj", "{87DE9E22-8E85-44B1-BE8F-3C076FD425A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

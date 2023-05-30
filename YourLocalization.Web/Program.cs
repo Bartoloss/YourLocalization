@@ -1,13 +1,13 @@
-using Microsoft.AspNetCore.Identity;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using YourLocalization.Application;
 using YourLocalization.Application.Interfaces;
 using YourLocalization.Application.Services;
-using YourLocalization.Domain.Interface;
+using YourLocalization.Application.ViewModels.Point;
+using YourLocalization.Application.ViewModels.User;
 using YourLocalization.Domain.Model;
 using YourLocalization.Infrastructure;
-using YourLocalization.Infrastructure.Repositoriees;
-using YourLocalization.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,9 +23,12 @@ builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfi
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure();
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddFluentValidation();
 
 builder.Services.AddTransient<IPointService, PointService>();
+
+builder.Services.AddTransient<IValidator<NewUserVm>, NewUserValidation>();
+builder.Services.AddTransient<IValidator<NewPointVm>, NewPointValidation>();
 
 var app = builder.Build();
 
@@ -48,7 +51,6 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
-
 
 app.MapControllerRoute(
     name: "default",

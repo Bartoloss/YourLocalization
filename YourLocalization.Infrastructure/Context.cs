@@ -1,13 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.EntityFrameworkCore.Internal;
-using Microsoft.EntityFrameworkCore.Migrations.Operations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using YourLocalization.Domain.Model;
 
 namespace YourLocalization.Infrastructure
@@ -19,6 +11,7 @@ namespace YourLocalization.Infrastructure
         public DbSet<PointTag> PointTag { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<YourLocalization.Domain.Model.Type> Types { get; set; }
+
         public Context(DbContextOptions options) : base(options)
         {
         }

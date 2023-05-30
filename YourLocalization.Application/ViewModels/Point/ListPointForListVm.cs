@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using YourLocalization.Application.ViewModels.User;
-
-namespace YourLocalization.Application.ViewModels.Point
+﻿namespace YourLocalization.Application.ViewModels.Point
 {
     public class ListPointForListVm
     {

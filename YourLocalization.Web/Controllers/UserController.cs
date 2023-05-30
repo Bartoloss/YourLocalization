@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using YourLocalization.Application.Interfaces;
+using YourLocalization.Application.ViewModels.User;
 
 namespace YourLocalization.Web.Controllers
 {
     public class UserController : Controller
     {
         private readonly IUserService _userService;
+
         public UserController(IUserService userService)
         {
             _userService = userService;
@@ -25,7 +27,7 @@ namespace YourLocalization.Web.Controllers
             {
                 pageNo = 1;
             }
-            if(searchString is null)
+            if (searchString is null)
             {
                 searchString = String.Empty;
             }
@@ -34,19 +36,18 @@ namespace YourLocalization.Web.Controllers
             return View(model);
         }
 
-
         [HttpGet]
-        public IActionResult AddUser() //metoda ta będzie zwracać pusty formularz który użytkownik będzie musiał wypełnić
+        public IActionResult AddUser() //metoda ta zwraca pusty formularz który użytkownik będzie musiał wypełnić
         {
-            return View();
+            return View(new NewUserVm());
         }
 
-        //[HttpPost]
-        //public IActionResult AddCustomer(UserModel model)
-        //{
-        //    var id = userService.AddCustomer(model);
-        //    return View();
-        //}
+        [HttpPost]
+        public IActionResult AddUser(NewUserVm model)
+        {
+            string id = _userService.AddUser(model);
+            return RedirectToAction("Index");
+        }
 
         //[HttpGet]
         //public IActionResult AddNewAddressForClient(int userId)

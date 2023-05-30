@@ -5,7 +5,6 @@ namespace YourLocalization.Test
         [Fact]
         public void Test1()
         {
-
         }
     }
 }
