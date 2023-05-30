@@ -9,6 +9,7 @@ namespace YourLocalization.Application.ViewModels.User
         public string Id { get; set; }
         public string FullName { get; set; }
         public string Email { get; set; }
+        public int AmountOfAddresses { get; set; }
         public List<AddressForListVm> Addresses { get; set; }
 
         public void Mapping(Profile profile)

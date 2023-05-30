@@ -26,6 +26,20 @@ namespace YourLocalization.Application.ViewModels.Point
     {
         public NewPointValidation()
         {
+            RuleFor(x => x.Id).NotEmpty();
+            RuleFor(x => x.Name).NotEmpty();
+            RuleFor(x => x.Name).MaximumLength(50);
+            RuleFor(x => x.TypeId).NotEmpty();
+            RuleFor(x => x.Street).NotEmpty();
+            RuleFor(x => x.Street).MaximumLength(50);
+            RuleFor(x => x.BuildingNumber).NotEmpty();
+            RuleFor(x => x.BuildingNumber).MaximumLength(5);
+            RuleFor(x => x.ZipCode).NotEmpty();
+            RuleFor(x => x.ZipCode).Length(6);
+            RuleFor(x => x.City).NotEmpty();
+            RuleFor(x => x.City).MaximumLength(50);
+            RuleFor(x => x.Country).NotEmpty();
+            RuleFor(x => x.Country).MaximumLength(50);
 
         }
     }

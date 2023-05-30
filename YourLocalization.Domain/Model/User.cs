@@ -8,7 +8,8 @@ namespace YourLocalization.Domain.Model
         public string LastName { get; set; }
         public byte[]? LogoPic { get; set; }
         public bool IsActive { get; set; }
+        public int AmountOfAddresses { get; set; }
 
-        public virtual ICollection<AddressDetail> Adresses { get; set; }
+        public virtual ICollection<AddressDetail> Addresses { get; set; }
     }
 }

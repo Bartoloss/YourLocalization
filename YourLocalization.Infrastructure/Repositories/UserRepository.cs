@@ -27,7 +27,7 @@ namespace YourLocalization.Infrastructure.Repositories
 
         public User GetUser(string userId)
         {
-            return _context.Users.Include(x => x.Adresses).First(p => p.Id == userId);
+            return _context.Users.Include(x => x.Addresses).First(p => p.Id == userId);
         }
     }
 }
