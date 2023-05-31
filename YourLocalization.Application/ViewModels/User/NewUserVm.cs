@@ -34,7 +34,6 @@ namespace YourLocalization.Application.ViewModels.User
             RuleFor(x => x.Email).EmailAddress();
             RuleFor(x => x.PhoneNumber).NotEmpty();
             RuleFor(x => x.PhoneNumber).Length(9);
-            
         }
     }
 }

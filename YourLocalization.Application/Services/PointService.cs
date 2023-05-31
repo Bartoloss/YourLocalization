@@ -25,6 +25,11 @@ namespace YourLocalization.Application.Services
             return id;
         }
 
+        public void DeletePoint(int id)
+        {
+            _pointRepo.DeletePoint(id);
+        }
+
         public ListPointForListVm GetAllPointsForList(int pageSize, int pageNo, string searchString)
         {
             List<PointForListVm> points = _pointRepo.GetAllPoints().Where(p => p.Name.StartsWith(searchString))
@@ -46,6 +51,19 @@ namespace YourLocalization.Application.Services
             Point? point = _pointRepo.GetPointById(pointId);
             PointDetailsVm pointVm = _mapper.Map<PointDetailsVm>(point);
             return pointVm;
+        }
+
+        public NewPointVm GetPointForEdit(int id)
+        {
+            Point point = _pointRepo.GetPointById(id);
+            NewPointVm pointVm = _mapper.Map<NewPointVm>(point);
+            return pointVm;
+        }
+
+        public void UpdatePoint(NewPointVm model)
+        {
+            var point = _mapper.Map<Point>(model);
+            _pointRepo.UpdatePoint(point);
         }
     }
 }

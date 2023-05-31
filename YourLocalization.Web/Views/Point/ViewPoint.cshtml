@@ -4,7 +4,7 @@
     ViewData["Title"] = "ViewPoint";
 }
 
-<h1>ViewPoint</h1>
+<h1>View Point</h1>
 
 <div>
     <h4>Details of point with ID=@Html.DisplayFor(model => model.Id)</h4>
@@ -55,6 +55,6 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "EditPoint", new {  id = Model.Id }) |
     <a asp-action="Index">Back to List</a>
 </div>

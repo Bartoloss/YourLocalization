@@ -48,7 +48,6 @@ namespace YourLocalization.Application.Services
             UserDetailsVm userVm = _mapper.Map<UserDetailsVm>(user);
 
             userVm.Addresses = new List<AddressForListVm>();
-            userVm.AmountOfAddresses = userVm.Addresses.Count;
 
             foreach (AddressDetail address in user.Addresses)
             {
@@ -65,7 +64,8 @@ namespace YourLocalization.Application.Services
                 };
                 userVm.Addresses.Add(newAddress);
             }
-            
+            userVm.AmountOfAddresses = userVm.Addresses.Count;
+
             return userVm;
         }
     }

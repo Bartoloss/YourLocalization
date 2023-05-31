@@ -38,11 +38,12 @@
     </dl>
 </div>
 
-<div class="row">
-    <table class="table">
-        <tbody>
+
             @foreach (var address in Model.Addresses)
             {
+    <div class="row">
+        <table class="table">
+            <tbody>
                 <dt class="col-sm-2">
                     @Html.DisplayNameFor(x => address.NameAddress)
                 </dt>
@@ -85,10 +86,11 @@
                 <dd class="col-sm-10">
                     @Html.DisplayFor(x => address.Country)
                 </dd>
-            }
         </tbody>
-    </table>
-</div>
+        </table>
+    </div>
+            }
+        
 
 
 

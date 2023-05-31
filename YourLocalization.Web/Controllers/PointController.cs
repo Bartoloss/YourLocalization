@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using YourLocalization.Application.Interfaces;
-using YourLocalization.Application.Services;
 using YourLocalization.Application.ViewModels.Point;
-using YourLocalization.Application.ViewModels.User;
+using YourLocalization.Domain.Model;
 
 namespace YourLocalization.Web.Controllers
 {
@@ -39,7 +38,7 @@ namespace YourLocalization.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult AddPoint() 
+        public IActionResult AddPoint()
         {
             return View(new NewPointVm());
         }
@@ -51,12 +50,31 @@ namespace YourLocalization.Web.Controllers
             return RedirectToAction("Index");
         }
 
-
         [HttpGet("point/details/{pointId}")]
         public IActionResult ViewPoint(int pointId)
         {
             var pointModel = _pointService.GetPointDetails(pointId);
             return View(pointModel);
+        }
+
+        [HttpGet]
+        public IActionResult EditPoint(int id)
+        {
+            NewPointVm point = _pointService.GetPointForEdit(id);
+            return View(point);
+        }
+
+        [HttpPost]
+        public IActionResult EditPoint(NewPointVm model)
+        {
+            _pointService.UpdatePoint(model);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult DeletePoint(int id)
+        {
+            _pointService.DeletePoint(id);
+            return RedirectToAction("Index");
         }
     }
 }

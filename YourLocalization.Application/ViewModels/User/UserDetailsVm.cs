@@ -17,7 +17,7 @@ namespace YourLocalization.Application.ViewModels.User
             profile.CreateMap<YourLocalization.Domain.Model.User, UserDetailsVm>()
                 .ForMember(s => s.FullName, opt => opt.MapFrom(d => d.FirstName + " " + d.LastName));
 
-            profile.CreateMap<AddressDetail, UserDetailsVm>();
+            profile.CreateMap<AddressDetail, AddressForListVm>();
         }
     }
 }

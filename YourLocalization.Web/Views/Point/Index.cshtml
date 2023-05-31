@@ -7,7 +7,7 @@
 <h1>List of Points</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="AddPoint">Create New</a>
 </p>
 
 <form asp-action="Index" asp-controller="Point" method="post">
@@ -45,9 +45,9 @@
                 @Html.DisplayFor(modelItem => item.TypeId)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Edit", "EditPoint", new { id=item.Id  }) |
                 @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Delete", "DeletePoint", new { id=item.Id })
             </td>
         </tr>
 }

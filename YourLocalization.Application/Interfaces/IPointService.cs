@@ -1,4 +1,5 @@
 ﻿using YourLocalization.Application.ViewModels.Point;
+using YourLocalization.Domain.Model;
 
 namespace YourLocalization.Application.Interfaces
 {
@@ -9,5 +10,8 @@ namespace YourLocalization.Application.Interfaces
         int AddPoint(NewPointVm point);
 
         PointDetailsVm GetPointDetails(int pointId);
+        NewPointVm GetPointForEdit(int id);
+        void UpdatePoint(NewPointVm model);
+        void DeletePoint(int id);
     }
 }

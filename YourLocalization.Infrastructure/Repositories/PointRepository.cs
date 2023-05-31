@@ -55,5 +55,18 @@ namespace YourLocalization.Infrastructure.Repositoriees
         {
             return _context.Types;
         }
+
+        public void UpdatePoint(Point point)
+        {
+            _context.Attach(point);
+            _context.Entry(point).Property("Name").IsModified = true;
+            _context.Entry(point).Property("TypeId").IsModified = true;
+            _context.Entry(point).Property("Street").IsModified = true;
+            _context.Entry(point).Property("BuildingNumber").IsModified = true;
+            _context.Entry(point).Property("ZipCode").IsModified = true;
+            _context.Entry(point).Property("City").IsModified = true;
+            _context.Entry(point).Property("Country").IsModified = true;
+            _context.SaveChanges();
+        }
     }
 }

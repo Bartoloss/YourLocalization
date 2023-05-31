@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using FluentValidation;
 using YourLocalization.Application.Mapping;
-using YourLocalization.Application.ViewModels.User;
 
 namespace YourLocalization.Application.ViewModels.Point
 {
@@ -18,7 +17,7 @@ namespace YourLocalization.Application.ViewModels.Point
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<NewPointVm, YourLocalization.Domain.Model.Point>();
+            profile.CreateMap<NewPointVm, YourLocalization.Domain.Model.Point>().ReverseMap();
         }
     }
 
@@ -40,7 +39,6 @@ namespace YourLocalization.Application.ViewModels.Point
             RuleFor(x => x.City).MaximumLength(50);
             RuleFor(x => x.Country).NotEmpty();
             RuleFor(x => x.Country).MaximumLength(50);
-
         }
     }
 }
