@@ -6,8 +6,11 @@ using YourLocalization.Application.Interfaces;
 using YourLocalization.Application.Services;
 using YourLocalization.Application.ViewModels.Point;
 using YourLocalization.Application.ViewModels.User;
+using YourLocalization.Domain.Interface;
 using YourLocalization.Domain.Model;
 using YourLocalization.Infrastructure;
+using YourLocalization.Infrastructure.Repositoriees;
+using YourLocalization.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +29,9 @@ builder.Services.AddInfrastructure();
 builder.Services.AddControllersWithViews().AddFluentValidation();
 
 builder.Services.AddTransient<IPointService, PointService>();
+builder.Services.AddTransient<IPointRepository, PointRepository>();
+builder.Services.AddTransient<ITypeService, TypeService>();
+builder.Services.AddTransient<ITypeRepository, TypeRepository>();
 
 builder.Services.AddTransient<IValidator<NewUserVm>, NewUserValidation>();
 builder.Services.AddTransient<IValidator<NewPointVm>, NewPointValidation>();
