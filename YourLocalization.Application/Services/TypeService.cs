@@ -9,6 +9,7 @@ using YourLocalization.Application.Interfaces;
 using YourLocalization.Application.ViewModels.Point;
 using YourLocalization.Application.ViewModels.Type;
 using YourLocalization.Domain.Interface;
+using Type = YourLocalization.Domain.Model.Type;
 
 namespace YourLocalization.Application.Services
 {
@@ -23,9 +24,9 @@ namespace YourLocalization.Application.Services
             _mapper = mapper;
         }
 
-        public int AddType(NewTypeVm point)
+        public int AddType(NewTypeVm newTypeVm)
         {
-            YourLocalization.Domain.Model.Type newType = _mapper.Map<YourLocalization.Domain.Model.Type>(point);
+            Type newType = _mapper.Map<Type>(newTypeVm);
             int id = _typeRepo.AddType(newType);
             return id;
         }
@@ -53,14 +54,14 @@ namespace YourLocalization.Application.Services
 
         public NewTypeVm GetTypeForEdit(int id)
         {
-            var type = _typeRepo.GetTypeById(id);
-            var typeVm = _mapper.Map<NewTypeVm>(type);
+            Type type = _typeRepo.GetTypeById(id);
+            NewTypeVm typeVm = _mapper.Map<NewTypeVm>(type);
             return typeVm;
         }
 
-        public void UpdateType(NewTypeVm model)
+        public void UpdateType(NewTypeVm updateTypeVm)
         {
-            var type = _mapper.Map<YourLocalization.Domain.Model.Type>(model);
+            Type type = _mapper.Map<Type>(updateTypeVm);
             _typeRepo.UpdateType(type);
 
         }

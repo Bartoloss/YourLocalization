@@ -19,6 +19,5 @@ namespace YourLocalization.Domain.Interface
         Type? GetTypeById(int typeId);
 
         void UpdateType(Type type);
-        
     }
 }

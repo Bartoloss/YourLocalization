@@ -8,12 +8,10 @@ namespace YourLocalization.Web.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IPointService _pointService;
 
-        public HomeController(ILogger<HomeController> logger, IPointService pointService)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            _pointService = pointService;
         }
 
         public IActionResult Index()

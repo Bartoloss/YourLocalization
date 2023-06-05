@@ -15,7 +15,9 @@ namespace YourLocalization.Application.Interfaces
         int AddType(NewTypeVm point);
 
         NewTypeVm GetTypeForEdit(int id);
+
         void UpdateType(NewTypeVm model);
+
         void DeleteType(int id);
     }
 }

@@ -18,6 +18,7 @@ namespace YourLocalization.Domain.Interface
         IQueryable<Tag> GetAllTags();
 
         IQueryable<Type> GetAllTypes();
+
         void UpdatePoint(Point point);
     }
 }

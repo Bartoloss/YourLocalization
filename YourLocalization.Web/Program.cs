@@ -28,13 +28,7 @@ builder.Services.AddInfrastructure();
 
 builder.Services.AddControllersWithViews().AddFluentValidation();
 
-builder.Services.AddTransient<IPointService, PointService>();
-builder.Services.AddTransient<IPointRepository, PointRepository>();
-builder.Services.AddTransient<ITypeService, TypeService>();
-builder.Services.AddTransient<ITypeRepository, TypeRepository>();
 
-builder.Services.AddTransient<IValidator<NewUserVm>, NewUserValidation>();
-builder.Services.AddTransient<IValidator<NewPointVm>, NewPointValidation>();
 
 var app = builder.Build();
 

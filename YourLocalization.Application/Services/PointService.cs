@@ -18,9 +18,9 @@ namespace YourLocalization.Application.Services
             _mapper = mapper;
         }
 
-        public int AddPoint(NewPointVm point)
+        public int AddPoint(NewPointVm newPointVm)
         {
-            Point newPoint = _mapper.Map<Point>(point);
+            Point newPoint = _mapper.Map<Point>(newPointVm);
             int id = _pointRepo.AddPoint(newPoint);
             return id;
         }
@@ -60,9 +60,9 @@ namespace YourLocalization.Application.Services
             return pointVm;
         }
 
-        public void UpdatePoint(NewPointVm model)
+        public void UpdatePoint(NewPointVm updatePointVm)
         {
-            var point = _mapper.Map<Point>(model);
+            Point point = _mapper.Map<Point>(updatePointVm);
             _pointRepo.UpdatePoint(point);
         }
     }

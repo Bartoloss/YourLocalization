@@ -18,9 +18,9 @@ namespace YourLocalization.Application.Services
             _mapper = mapper;
         }
 
-        public string AddUser(NewUserVm user)
+        public string AddUser(NewUserVm newUserVm)
         {
-            User newUser = _mapper.Map<User>(user);
+            User newUser = _mapper.Map<User>(newUserVm);
             newUser.IsActive = true;
             string id = _userRepo.AddUser(newUser);
             return id;
@@ -54,7 +54,7 @@ namespace YourLocalization.Application.Services
                 AddressForListVm newAddress = new AddressForListVm()
                 {
                     Id = address.Id,
-                    NameAddress = address.NameAddress,
+                    NameAddress = address.Name,
                     Street = address.Street,
                     BuildingNumber = address.BuildingNumber,
                     FlatNumber = address.FlatNumber,

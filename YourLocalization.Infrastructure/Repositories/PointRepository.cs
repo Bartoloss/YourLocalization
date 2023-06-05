@@ -43,7 +43,7 @@ namespace YourLocalization.Infrastructure.Repositoriees
 
         public Point? GetPointById(int pointId)
         {
-            return _context.Points.First(i => i.Id == pointId);
+            return _context.Points.FirstOrDefault(i => i.Id == pointId);
         }
 
         public IQueryable<Tag> GetAllTags()

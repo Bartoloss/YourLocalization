@@ -10,8 +10,11 @@ namespace YourLocalization.Application.Interfaces
         int AddPoint(NewPointVm point);
 
         PointDetailsVm GetPointDetails(int pointId);
+
         NewPointVm GetPointForEdit(int id);
+
         void UpdatePoint(NewPointVm model);
+
         void DeletePoint(int id);
     }
 }
