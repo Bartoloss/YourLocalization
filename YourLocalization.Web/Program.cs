@@ -11,6 +11,7 @@ using YourLocalization.Domain.Model;
 using YourLocalization.Infrastructure;
 using YourLocalization.Infrastructure.Repositoriees;
 using YourLocalization.Infrastructure.Repositories;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,8 +28,6 @@ builder.Services.AddApplication();
 builder.Services.AddInfrastructure();
 
 builder.Services.AddControllersWithViews().AddFluentValidation();
-
-
 
 var app = builder.Build();
 
