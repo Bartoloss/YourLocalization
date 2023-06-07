@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using YourLocalization.Infrastructure;
 
@@ -11,9 +12,10 @@ using YourLocalization.Infrastructure;
 namespace YourLocalization.Infrastructure.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20230606114151_NullableFirstNameAndLastNameOfUser")]
+    partial class NullableFirstNameAndLastNameOfUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -204,7 +206,7 @@ namespace YourLocalization.Infrastructure.Migrations
 
                     b.HasIndex("UserId1");
 
-                    b.ToTable("AddressDetails", (string)null);
+                    b.ToTable("AddressDetails");
                 });
 
             modelBuilder.Entity("YourLocalization.Domain.Model.Point", b =>
@@ -246,7 +248,7 @@ namespace YourLocalization.Infrastructure.Migrations
 
                     b.HasIndex("TypeId");
 
-                    b.ToTable("Points", (string)null);
+                    b.ToTable("Points");
                 });
 
             modelBuilder.Entity("YourLocalization.Domain.Model.PointTag", b =>
@@ -261,7 +263,7 @@ namespace YourLocalization.Infrastructure.Migrations
 
                     b.HasIndex("TagId");
 
-                    b.ToTable("PointTag", (string)null);
+                    b.ToTable("PointTag");
                 });
 
             modelBuilder.Entity("YourLocalization.Domain.Model.Tag", b =>
@@ -278,7 +280,7 @@ namespace YourLocalization.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tags", (string)null);
+                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("YourLocalization.Domain.Model.Type", b =>
@@ -295,7 +297,7 @@ namespace YourLocalization.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Types", (string)null);
+                    b.ToTable("Types");
                 });
 
             modelBuilder.Entity("YourLocalization.Domain.Model.User", b =>
