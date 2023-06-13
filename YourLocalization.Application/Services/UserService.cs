@@ -28,7 +28,7 @@ namespace YourLocalization.Application.Services
 
         public ListUserForListVm GetAllUsersForList(int pageSize, int pageNo, string searchString)
         {
-            List<UserForListVm> users = _userRepo.GetAllActiveUsers().Where(p => p.FirstName.StartsWith(searchString) || p.LastName.StartsWith(searchString) || p.UserName.StartsWith(searchString))
+            List<UserForListVm> users = _userRepo.GetAllActiveUsers().Where(p => p.UserName.StartsWith(searchString))
                 .ProjectTo<UserForListVm>(_mapper.ConfigurationProvider).ToList();
             List<UserForListVm> usersToShow = users.Skip(pageSize * (pageNo - 1)).Take(pageSize).ToList();
             ListUserForListVm usersForList = new ListUserForListVm()

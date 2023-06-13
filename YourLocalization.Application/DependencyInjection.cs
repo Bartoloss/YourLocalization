@@ -14,6 +14,7 @@ namespace YourLocalization.Application
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<ICustomerService, CustomerService>();
             services.AddTransient<IPointService, PointService>();
             services.AddTransient<ITypeService, TypeService>();
 

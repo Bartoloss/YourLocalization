@@ -12,6 +12,9 @@ using YourLocalization.Infrastructure;
 using YourLocalization.Infrastructure.Repositoriees;
 using YourLocalization.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.AspNetCore.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,13 +24,20 @@ builder.Services.AddDbContext<Context>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<Context>();
 
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure();
 
 builder.Services.AddControllersWithViews().AddFluentValidation();
+
+builder.Services.AddAuthentication().AddGoogle(options => {
+    IConfigurationSection googleAuthNSection = builder.Configuration.GetSection("Authentication:Google");
+    options.ClientId = googleAuthNSection["ClientId"];
+    options.ClientSecret = googleAuthNSection["ClientSecret"];
+});
+
 
 var app = builder.Build();
 
