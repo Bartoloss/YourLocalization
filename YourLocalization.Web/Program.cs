@@ -27,6 +27,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<Context>();
 
+
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure();
 

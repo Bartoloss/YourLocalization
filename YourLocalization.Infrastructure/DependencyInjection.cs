@@ -10,7 +10,6 @@ namespace YourLocalization.Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
             services.AddTransient<IUserRepository, UserRepository>();
-            services.AddTransient<ICustomerRepository, CustomerRepository>();
             services.AddTransient<IPointRepository, PointRepository>();
             services.AddTransient<ITypeRepository, TypeRepository>();
             return services;

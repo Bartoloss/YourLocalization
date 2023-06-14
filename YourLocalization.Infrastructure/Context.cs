@@ -14,7 +14,6 @@ namespace YourLocalization.Infrastructure
         public DbSet<PointTag> PointTag { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Type> Types { get; set; }
-        public DbSet<Customer> Customers { get; set; }
 
 
         public Context(DbContextOptions options) : base(options)
