@@ -115,7 +115,7 @@ namespace YourLocalization.Web.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return RedirectToAction("Menu"); //LocalRedirect(returnUrl);
+                    return RedirectToAction("Index"); //LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
                 {

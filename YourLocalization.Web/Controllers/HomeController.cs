@@ -24,7 +24,12 @@ namespace YourLocalization.Web.Controllers
             return View();
         }
 
-        public IActionResult Menu()
+        public IActionResult SelectRegister()
+        {
+            return View();
+        }
+
+        public IActionResult Logout()
         {
             return View();
         }
