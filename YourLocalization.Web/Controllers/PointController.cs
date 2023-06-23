@@ -1,5 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Security.Claims;
 using YourLocalization.Application.Interfaces;
+using YourLocalization.Application.Services;
 using YourLocalization.Application.ViewModels.Point;
 using YourLocalization.Domain.Model;
 
@@ -8,12 +13,16 @@ namespace YourLocalization.Web.Controllers
     public class PointController : Controller
     {
         private readonly IPointService _pointService;
+        private readonly TypeService _typeService;
 
-        public PointController(IPointService pointService)
+        public PointController(IPointService pointService, TypeService typeService)
         {
             _pointService = pointService;
+            _typeService = typeService;
         }
 
+
+        [Authorize(Roles = "Admin")]
         [HttpGet("points")]
         public IActionResult Index()
         {
@@ -21,6 +30,7 @@ namespace YourLocalization.Web.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost("points")]
         public IActionResult Index(int pageSize, int? pageNo, string searchString)
         {
@@ -37,12 +47,43 @@ namespace YourLocalization.Web.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "User, Admin")]
+        [HttpGet("points")]
+        public IActionResult ViewUserPoints()
+        {
+            string username = HttpContext.User.FindFirstValue("username"); //poprawić
+            var model = _pointService.GetUserPointsForList(username,2, 1, "");
+            return View(model);
+        }
+
+        [Authorize(Roles = "User, Admin")]
+        [HttpPost("points")]
+        public IActionResult ViewUserPoints(string username, int pageSize, int? pageNo, string searchString)
+        {
+            if (!pageNo.HasValue)
+            {
+                pageNo = 1;
+            }
+            if (searchString is null)
+            {
+                searchString = String.Empty;
+            }
+
+            var model = _pointService.GetUserPointsForList(username, pageSize, pageNo.Value, searchString);
+            return View(model);
+        }
+
+
+        [Authorize(Roles = "User, Admin")]
         [HttpGet]
         public IActionResult AddPoint()
         {
-            return View(new NewPointVm());
+            ViewBag.TypesSelectList = new SelectList(_typeService.GetAllTypesToDropDownList());
+            //string username = HttpContext.User.FindFirstValue("username");
+            return View(new NewPointVm(_typeService));
         }
 
+        [Authorize(Roles = "User, Admin")]
         [HttpPost]
         public IActionResult AddPoint(NewPointVm model)
         {
@@ -50,6 +91,7 @@ namespace YourLocalization.Web.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "User, Admin")]
         [HttpGet("point/details/{pointId}")]
         public IActionResult ViewPoint(int pointId)
         {
@@ -57,6 +99,7 @@ namespace YourLocalization.Web.Controllers
             return View(pointModel);
         }
 
+        [Authorize(Roles = "User, Admin")]
         [HttpGet]
         public IActionResult EditPoint(int id)
         {
@@ -64,6 +107,7 @@ namespace YourLocalization.Web.Controllers
             return View(point);
         }
 
+        [Authorize(Roles = "User, Admin")]
         [HttpPost]
         public IActionResult EditPoint(NewPointVm model)
         {
@@ -71,6 +115,7 @@ namespace YourLocalization.Web.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "User, Admin")]
         public IActionResult DeletePoint(int id)
         {
             _pointService.DeletePoint(id);

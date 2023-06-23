@@ -23,6 +23,7 @@ namespace YourLocalization.Application
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             return services;
+
         }
     }
 }

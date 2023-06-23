@@ -13,6 +13,8 @@ namespace YourLocalization.Domain.Interface
 
         IQueryable<Point> GetAllPoints();
 
+        IQueryable<Point> GetUserPoints(string username);
+
         Point? GetPointById(int pointId);
 
         IQueryable<Tag> GetAllTags();

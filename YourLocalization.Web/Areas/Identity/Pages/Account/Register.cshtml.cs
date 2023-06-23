@@ -72,6 +72,14 @@ namespace YourLocalization.Web.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
+            [StringLength(50, ErrorMessage = "The FirstName field should have a maximum of 50 characters")]
+            [Display(Name = "FirstName")]
+            public string FirstName { get; set; }
+            
+            [StringLength(50, ErrorMessage = "The Lastname field should have a maximum of 50 characters")]
+            [Display(Name = "Lastname")]
+            public string LastName { get; set; }
+
             [Required]
             [StringLength(50, ErrorMessage = "The Username field should have a maximum of 50 characters")]
             [Display(Name = "Username")]
@@ -104,6 +112,14 @@ namespace YourLocalization.Web.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            public bool IsCustomer { get; set; }
+
+            [StringLength(50, ErrorMessage = "The Company field should have a maximum of 50 characters")]
+            [Display(Name = "Company")]
+            public string Company { get; set; }
+
+
         }
 
 
@@ -120,11 +136,30 @@ namespace YourLocalization.Web.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
+                string IsCustomer = Request.Query["IsCustomer"];
+                if (IsCustomer == "true")
+                {
+                    user.IsCustomer = true;
+                    user.FirstName = Input.FirstName;
+                    user.LastName = Input.LastName;
+                    user.UserName = Input.UserName; 
+                    user.Email = Input.Email;
+                    user.Company = Input.Company;
+                    user.IsActive = true;
+                    user.AmountOfAddresses = 0;
+                }
+                else if (IsCustomer == "false")
+                {
+                    user.IsCustomer = false;
+                    user.FirstName = Input.FirstName;
+                    user.LastName = Input.LastName;
+                    user.UserName = Input.UserName;
+                    user.Email = Input.Email;
+                    user.IsActive = true;
+                    user.AmountOfAddresses = 0;
+                }
 
-                //user.FirstName = Input.FirstName;
-                //user.LastName = Input.LastName;
-                user.IsActive = true;
-                user.AmountOfAddresses = 0;
+                
 
                 await _userStore.SetUserNameAsync(user, Input.UserName, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);

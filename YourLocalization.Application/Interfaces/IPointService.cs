@@ -7,6 +7,8 @@ namespace YourLocalization.Application.Interfaces
     {
         ListPointForListVm GetAllPointsForList(int pageSize, int pageNo, string searchString);
 
+        ListPointForListVm GetUserPointsForList(string username, int pageSize, int pageNo, string searchString);
+
         int AddPoint(NewPointVm point);
 
         PointDetailsVm GetPointDetails(int pointId);

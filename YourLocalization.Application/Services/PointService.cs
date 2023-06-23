@@ -46,6 +46,22 @@ namespace YourLocalization.Application.Services
             return pointsForList;
         }
 
+        public ListPointForListVm GetUserPointsForList(string username, int pageSize, int pageNo, string searchString)
+        {
+            List<PointForListVm> points = _pointRepo.GetUserPoints(username).Where(p => p.Name.StartsWith(searchString))
+               .ProjectTo<PointForListVm>(_mapper.ConfigurationProvider).ToList();
+            List<PointForListVm> pointsToShow = points.Skip(pageSize * (pageNo - 1)).Take(pageSize).ToList();
+            ListPointForListVm pointsForList = new ListPointForListVm()
+            {
+                PageSize = pageSize,
+                CurrentPage = pageNo,
+                SearchString = searchString,
+                Points = pointsToShow,
+                Count = points.Count
+            };
+            return pointsForList;
+        }
+
         public PointDetailsVm GetPointDetails(int pointId)
         {
             Point? point = _pointRepo.GetPointById(pointId);

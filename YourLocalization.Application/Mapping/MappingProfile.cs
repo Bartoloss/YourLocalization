@@ -1,28 +1,27 @@
 ﻿using AutoMapper;
 using System.Reflection;
 
-namespace YourLocalization.Application.Mapping
+namespace YourLocalization.Application.Mapping;
+
+public class MappingProfile : Profile
 {
-    public class MappingProfile : Profile
+    public MappingProfile()
     {
-        public MappingProfile()
-        {
-            ApplyMappingsFromAssembly(Assembly.GetExecutingAssembly());
-        }
+        ApplyMappingsFromAssembly(Assembly.GetExecutingAssembly());
+    }
 
-        private void ApplyMappingsFromAssembly(Assembly assembly)
-        {
-            var types = assembly.GetExportedTypes()
-                .Where(t => t.GetInterfaces().Any(i =>
-                i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IMapFrom<>)))
-                .ToList();
+    private void ApplyMappingsFromAssembly(Assembly assembly)
+    {
+        var types = assembly.GetExportedTypes()
+            .Where(t => t.GetInterfaces().Any(i =>
+            i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IMapFrom<>)))
+            .ToList();
 
-            foreach (var type in types)
-            {
-                var instance = Activator.CreateInstance(type);
-                var methodInfo = type.GetMethod("Mapping");
-                methodInfo?.Invoke(instance, new object[] { this });
-            }
+        foreach (var type in types)
+        {
+            var instance = Activator.CreateInstance(type);
+            var methodInfo = type.GetMethod("Mapping");
+            methodInfo?.Invoke(instance, new object[] { this });
         }
     }
 }

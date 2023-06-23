@@ -1,5 +1,8 @@
 ﻿@model YourLocalization.Application.ViewModels.Point.NewPointVm
-
+@using Microsoft.AspNetCore.Identity
+@using YourLocalization.Domain.Model
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
 @{
     ViewData["Title"] = "AddPoint";
 }
@@ -12,7 +15,12 @@
     <div class="col-md-4">
         <form asp-action="AddPoint">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="Id" class="form-control" />
+                <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="CreatedBy" class="control-label"></label>
+                <input asp-for="CreatedBy" class="form-control" />
+                <span asp-validation-for="CreatedBy" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
@@ -51,6 +59,14 @@
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <h2>Dropdown</h2>
+                    @Html.DropDownList("Id", Model.TypeSelectList as SelectList)
+                </div>
+            </div>
+
         </form>
     </div>
 </div>

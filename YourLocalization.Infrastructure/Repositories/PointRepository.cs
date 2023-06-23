@@ -41,6 +41,11 @@ namespace YourLocalization.Infrastructure.Repositoriees
             return _context.Points;
         }
 
+        public IQueryable<Point> GetUserPoints(string username)
+        {
+            return _context.Points.Where(i => i.CreatedBy == username);
+        }
+
         public Point? GetPointById(int pointId)
         {
             return _context.Points.FirstOrDefault(i => i.Id == pointId);
@@ -69,4 +74,5 @@ namespace YourLocalization.Infrastructure.Repositoriees
             _context.SaveChanges();
         }
     }
+        
 }

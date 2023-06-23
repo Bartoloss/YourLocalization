@@ -36,6 +36,13 @@ namespace YourLocalization.Application.Services
             _typeRepo.DeleteType(id);
         }
 
+        public List<Type> GetAllTypesToDropDownList()
+        {
+            List<Type> allTypes = (List<Type>)_typeRepo.GetAllTypes();
+            return allTypes;
+        }
+
+
         public ListTypeForListVm GetAllTypeForList(int pageSize, int pageNo, string searchString)
         {
             List<TypeForListVm> types = _typeRepo.GetAllTypes().Where(p => p.Name.StartsWith(searchString))
@@ -65,5 +72,7 @@ namespace YourLocalization.Application.Services
             _typeRepo.UpdateType(type);
 
         }
+
+        
     }
 }
