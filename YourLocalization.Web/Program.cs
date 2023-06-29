@@ -65,6 +65,10 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=SelectRegister}/{id?}");
+app.MapControllerRoute(
+    name: "register",
+    pattern: "{controller=Register}/{action=OnPostAsync}/{type}");
 app.MapRazorPages();
 
 app.Run();
+
