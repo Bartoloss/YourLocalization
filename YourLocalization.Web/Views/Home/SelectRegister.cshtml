@@ -2,8 +2,7 @@
     ViewData["Title"] = "Select Register";
 }
 
-
-<div class="text-center">
+@*<div class="text-center">
     <h1 class="display-4">Welcome to YourLocalization App!</h1>
     <br>
     <br>
@@ -12,17 +11,74 @@
     <h5>Do you want to report the location of a shop, hairdresser</h5>
     <h5>or other place that you think is missing in your area?</h5>
     <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register" asp-route-isCustomer="false">User Register</a>
-@*    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register/User">User Register</a>
-*@    <br>
+    <br>
     <br>
     <br>
     <h5>Or would you like to see where the community</h5>
     <h5>needs your business?</h5>
     <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register" asp-route-isCustomer="true">Customer Register</a>
-@*    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register/Customer">Customer Register</a>
-*@    <br>
     <br>
     <br>
     <br>
     <br>
+    <br>
+</div>*@
+
+<div class="text-center">
+<style>
+    .card:hover{
+        box-shadow : -1px 9px 40px -12px #808080;
+    }
+</style>
+    <h2> Who are you?</h2>
+    <div class="col d-flex justify-content-center">
+        <div class="row">
+        <div class="card" style="width:20em;margin:10px;">
+        <img src="~/1.png" class="card-img-top" />
+            <div class="card-body">
+                <div class="card-title">
+                    <h2>I'm user</h2>
+                </div>
+                <div class="card-text">
+                <p>Do you want to report the location of a shop, hairdresser or other place that you think is missing in your area?</p>
+                </div>
+                <a class="btn btn-primary" asp-area="Identity" asp-page="/Account/Register" asp-route-isCustomer="false">User Register </a>
+            </div>
+        </div>
+    <div class="card" style="width:20em;margin:10px;">
+        <img src="~/2.png" class="card-img-top" />
+        <div class="card-body">
+            <div class="card-title">
+                <h2>I'm customer</h2>
+            </div>
+            <div class="card-text">
+                <p>
+                    <br>
+                    Or would you like to see where the community needs your business?
+                    <br>
+                    <br>   
+                    </p>
+            </div>
+            <a class="btn btn-primary" asp-area="Identity" asp-page="/Account/Register" asp-route-isCustomer="true">Customer Register </a>
+        </div>
+    </div>
+</div>
+</div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+    $('.card').hover(
+        function () {
+            $(this).animate({
+                marginTop: "-=1%",
+                marginBottom : "+=1%"
+            },200)
+        },
+        function (){
+            $(this) animate( {
+                marginTop: "+=1%",
+                marginBottom: "-=1%"
+            },)
+        }
+    )
+</script>
 </div>

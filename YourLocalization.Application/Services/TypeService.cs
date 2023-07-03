@@ -36,11 +36,11 @@ namespace YourLocalization.Application.Services
             _typeRepo.DeleteType(id);
         }
 
-        public List<Type> GetAllTypesToDropDownList()
-        {
-            List<Type> allTypes = (List<Type>)_typeRepo.GetAllTypes();
-            return allTypes;
-        }
+        //public List<Type> GetAllTypesToDropDownList()
+        //{
+        //    List<Type> allTypes = (List<Type>)_typeRepo.GetAllTypes();
+        //    return allTypes;
+        //}
 
 
         public ListTypeForListVm GetAllTypeForList(int pageSize, int pageNo, string searchString)

@@ -13,12 +13,12 @@ namespace YourLocalization.Web.Controllers
     public class PointController : Controller
     {
         private readonly IPointService _pointService;
-        private readonly TypeService _typeService;
+        //private readonly TypeService _typeService;
 
-        public PointController(IPointService pointService, TypeService typeService)
+        public PointController(IPointService pointService) //TypeService typeService)
         {
             _pointService = pointService;
-            _typeService = typeService;
+            //_typeService = typeService;
         }
 
 
@@ -47,40 +47,38 @@ namespace YourLocalization.Web.Controllers
             return View(model);
         }
 
-        [Authorize(Roles = "User, Admin")]
-        [HttpGet("points")]
-        public IActionResult ViewUserPoints()
-        {
-            string username = HttpContext.User.FindFirstValue("username"); //poprawić
-            var model = _pointService.GetUserPointsForList(username,2, 1, "");
-            return View(model);
-        }
+        //[Authorize(Roles = "User, Admin")]
+        //[HttpGet("points")]
+        //public IActionResult ViewUserPoints()
+        //{
+        //    string username = HttpContext.User.FindFirstValue("username"); //poprawić
+        //    var model = _pointService.GetUserPointsForList(username,2, 1, "");
+        //    return View(model);
+        //}
 
-        [Authorize(Roles = "User, Admin")]
-        [HttpPost("points")]
-        public IActionResult ViewUserPoints(string username, int pageSize, int? pageNo, string searchString)
-        {
-            if (!pageNo.HasValue)
-            {
-                pageNo = 1;
-            }
-            if (searchString is null)
-            {
-                searchString = String.Empty;
-            }
+        //[Authorize(Roles = "User, Admin")]
+        //[HttpPost("points")]
+        //public IActionResult ViewUserPoints(string username, int pageSize, int? pageNo, string searchString)
+        //{
+        //    if (!pageNo.HasValue)
+        //    {
+        //        pageNo = 1;
+        //    }
+        //    if (searchString is null)
+        //    {
+        //        searchString = String.Empty;
+        //    }
 
-            var model = _pointService.GetUserPointsForList(username, pageSize, pageNo.Value, searchString);
-            return View(model);
-        }
+        //    var model = _pointService.GetUserPointsForList(username, pageSize, pageNo.Value, searchString);
+        //    return View(model);
+        //}
 
 
         [Authorize(Roles = "User, Admin")]
         [HttpGet]
         public IActionResult AddPoint()
         {
-            ViewBag.TypesSelectList = new SelectList(_typeService.GetAllTypesToDropDownList());
-            //string username = HttpContext.User.FindFirstValue("username");
-            return View(new NewPointVm(_typeService));
+            return View(new NewPointVm());
         }
 
         [Authorize(Roles = "User, Admin")]

@@ -143,11 +143,10 @@ namespace YourLocalization.Web.Areas.Identity.Pages.Account
                     user.IsCustomer = true;
                     user.FirstName = Input.FirstName;
                     user.LastName = Input.LastName;
-                    user.UserName = Input.UserName; 
+                    user.UserName = Input.UserName;
                     user.Email = Input.Email;
                     user.Company = Input.Company;
                     user.IsActive = true;
-                    user.AmountOfAddresses = 0;
                 }
                 else if (isCustomer == false)
                 {
@@ -155,7 +154,6 @@ namespace YourLocalization.Web.Areas.Identity.Pages.Account
                     user.UserName = Input.UserName;
                     user.Email = Input.Email;
                     user.IsActive = true;
-                    user.AmountOfAddresses = 0;
                 }
 
                 await _userStore.SetUserNameAsync(user, Input.UserName, CancellationToken.None);
