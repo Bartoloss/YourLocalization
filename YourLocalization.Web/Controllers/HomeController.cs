@@ -26,22 +26,6 @@ namespace YourLocalization.Web.Controllers
 
         public IActionResult SelectRegister()
         {
-            //YourLocalization.Web.Models.Content RegisterObject;
-            //List <YourLocalization.Web.Models.Content> Register = new List<Content>();
-
-            //RegisterObject = new Content();
-            //RegisterObject.Title = "User Register";
-            //RegisterObject.Text = "Do you want to report the location of a shop, hairdresser or other place that you think is missing in your area?";
-            //RegisterObject.Img = "https://www.pngkit.com/png/detail/115-1150342_user-avatar-icon-iconos-de-mujeres-a-color.png";
-            //Register.Add(RegisterObject);
-
-            //RegisterObject = new Content();
-            //YourLocalization.Web.Models.Content CustomerRegister = new Content();
-            //RegisterObject.Title = "Customer Register";
-            //RegisterObject.Text = "Or would you like to see where the community needs your business?";
-            //RegisterObject.Img = "https://static.vecteezy.com/system/resources/previews/000/439/863/original/vector-users-icon.jpg";
-            //Register.Add(RegisterObject);
-
             return View();
         }
 

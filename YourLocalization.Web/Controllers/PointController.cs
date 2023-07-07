@@ -13,12 +13,12 @@ namespace YourLocalization.Web.Controllers
     public class PointController : Controller
     {
         private readonly IPointService _pointService;
-        //private readonly TypeService _typeService;
+        private readonly ITypeService _typeService;
 
-        public PointController(IPointService pointService) //TypeService typeService)
+        public PointController(IPointService pointService, ITypeService typeService)
         {
             _pointService = pointService;
-            //_typeService = typeService;
+            _typeService = typeService;
         }
 
 
@@ -78,7 +78,9 @@ namespace YourLocalization.Web.Controllers
         [HttpGet]
         public IActionResult AddPoint()
         {
-            return View(new NewPointVm());
+            var newPointVm = new NewPointVm();
+            newPointVm.Types = _typeService.GetAllTypesToDropDownList();
+            return View(newPointVm);
         }
 
         [Authorize(Roles = "User, Admin")]
