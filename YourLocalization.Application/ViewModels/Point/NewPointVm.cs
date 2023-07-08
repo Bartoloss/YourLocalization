@@ -14,7 +14,6 @@ namespace YourLocalization.Application.ViewModels.Point
         public int Id { get; set; }
         public string CreatedBy { get; set; }
         public string Name { get; set; }
-        public string Type { get; set; }
         public int TypeId { get; set; }
         public string Street { get; set; }
         public string BuildingNumber { get; set; }

@@ -36,7 +36,7 @@ namespace YourLocalization.Application.Services
             _typeRepo.DeleteType(id);
         }
 
-        public List<Type> GetAllTypesToDropDownList()
+        public List<Type> GetAllTypesToList()
         {
             List<Type> allTypes = _typeRepo.GetAllTypes().ToList();
             return allTypes;

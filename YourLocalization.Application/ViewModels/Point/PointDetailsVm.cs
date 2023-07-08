@@ -13,6 +13,7 @@ namespace YourLocalization.Application.ViewModels.Point
         public string ZipCode { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
+        public List<YourLocalization.Domain.Model.Type> Types { get; set; }
 
         public void Mapping(Profile profile)
         {

@@ -79,7 +79,7 @@ namespace YourLocalization.Web.Controllers
         public IActionResult AddPoint()
         {
             var newPointVm = new NewPointVm();
-            newPointVm.Types = _typeService.GetAllTypesToDropDownList();
+            newPointVm.Types = _typeService.GetAllTypesToList();
             return View(newPointVm);
         }
 
@@ -96,6 +96,7 @@ namespace YourLocalization.Web.Controllers
         public IActionResult ViewPoint(int pointId)
         {
             var pointModel = _pointService.GetPointDetails(pointId);
+            pointModel.Types = _typeService.GetAllTypesToList();
             return View(pointModel);
         }
 

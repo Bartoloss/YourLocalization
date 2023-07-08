@@ -13,7 +13,7 @@ namespace YourLocalization.Application.Interfaces
     {
         ListTypeForListVm GetAllTypeForList(int pageSize, int pageNo, string searchString);
 
-        public List<Type> GetAllTypesToDropDownList();
+        public List<Type> GetAllTypesToList();
 
         int AddType(NewTypeVm point);
 
