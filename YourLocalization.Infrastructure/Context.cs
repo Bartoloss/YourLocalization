@@ -1,7 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using YourLocalization.Domain.Model;
 using Type = YourLocalization.Domain.Model.Type;
 
@@ -14,7 +12,7 @@ namespace YourLocalization.Infrastructure
         public DbSet<PointTag> PointTag { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Type> Types { get; set; }
-
+        public DbSet<Subtype> Subtypes { get; set; }
 
         public Context(DbContextOptions options) : base(options)
         {
@@ -36,8 +34,6 @@ namespace YourLocalization.Infrastructure
                 .HasOne<Tag>(it => it.Tag)
                 .WithMany(t => t.PointTags)
                 .HasForeignKey(it => it.TagId);
-
-            
         }
     }
 }

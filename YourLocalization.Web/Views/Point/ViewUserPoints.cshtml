@@ -1,0 +1,91 @@
+﻿@model YourLocalization.Application.ViewModels.Point.ListPointForListVm
+
+@{
+    ViewData["Title"] = "Your Points";
+}
+
+<h1>Your Points</h1>
+
+<p>
+    <a asp-action="AddPoint">Create New Point</a>
+</p>
+
+<form asp-action="ViewUserPoints" asp-controller="Point" method="post">
+    <div class="row">
+        <input type="text" asp-for="SearchString" class="form-control" name="searchString" id="searchString" />
+        <input type="submit" value="Search" class="btn btn-primary mt-2" />
+    </div>
+
+
+<div class="row">
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Type
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Points) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeDetails.Name)
+            </td>
+            <td>
+                            @Html.ActionLink("Edit", "EditPoint", new { id=item.Id  }) |
+                            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                            @Html.ActionLink("Delete", "DeletePoint", new { id=item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+
+    <div class="row">
+        <table>
+            <tr>
+                @for (int i = 1; i <= Math.Ceiling(Model.Count / (double)Model.PageSize); i++)
+                {
+                    <td>
+                        @if (i != Model.CurrentPage)
+                        {
+                            <a href="javascript:PagerClick(@i)">@i</a>
+                        }
+                        else
+                        {
+                            <span>@i</span>
+                        }
+                    </td>
+                }
+            </tr>
+        </table>
+        <input type="hidden" name="pageNo" id="pageNo" />
+        <input type="hidden" name="pageSize" id="pageSize" value="10" />
+    </div>
+</form>
+
+@section Scripts
+    {
+    <script type="text/javascript">
+        function PagerClick(index) {
+            document.getElementById("pageNo").value = index;
+            document.forms[0].submit();
+        }
+    </script>
+}

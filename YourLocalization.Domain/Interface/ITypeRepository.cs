@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using YourLocalization.Domain.Model;
-using Type = YourLocalization.Domain.Model.Type;
+﻿using Type = YourLocalization.Domain.Model.Type;
 
 namespace YourLocalization.Domain.Interface
 {

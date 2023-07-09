@@ -41,9 +41,9 @@ namespace YourLocalization.Infrastructure.Repositoriees
             return _context.Points;
         }
 
-        public IQueryable<Point> GetUserPoints(string username)
+        public IQueryable<Point> GetUserPoints(string name)
         {
-            return _context.Points.Where(i => i.CreatedBy == username);
+            return _context.Points.Where(i => i.CreatedBy == name);
         }
 
         public Point? GetPointById(int pointId)
@@ -73,6 +73,10 @@ namespace YourLocalization.Infrastructure.Repositoriees
             _context.Entry(point).Property("Country").IsModified = true;
             _context.SaveChanges();
         }
+
+        public Type? GetTypeForPoint(int pointTypeId)
+        {
+            return _context.Types.FirstOrDefault(i => i.Id == pointTypeId);
+        }
     }
-        
 }

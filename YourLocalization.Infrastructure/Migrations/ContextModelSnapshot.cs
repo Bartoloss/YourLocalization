@@ -268,6 +268,28 @@ namespace YourLocalization.Infrastructure.Migrations
                     b.ToTable("PointTag");
                 });
 
+            modelBuilder.Entity("YourLocalization.Domain.Model.Subtype", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TypeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TypeId");
+
+                    b.ToTable("Subtypes");
+                });
+
             modelBuilder.Entity("YourLocalization.Domain.Model.Tag", b =>
                 {
                     b.Property<int>("Id")
@@ -476,6 +498,15 @@ namespace YourLocalization.Infrastructure.Migrations
                     b.Navigation("Tag");
                 });
 
+            modelBuilder.Entity("YourLocalization.Domain.Model.Subtype", b =>
+                {
+                    b.HasOne("YourLocalization.Domain.Model.Type", null)
+                        .WithMany("Subtypes")
+                        .HasForeignKey("TypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("YourLocalization.Domain.Model.Point", b =>
                 {
                     b.Navigation("PointTags");
@@ -489,6 +520,8 @@ namespace YourLocalization.Infrastructure.Migrations
             modelBuilder.Entity("YourLocalization.Domain.Model.Type", b =>
                 {
                     b.Navigation("Points");
+
+                    b.Navigation("Subtypes");
                 });
 
             modelBuilder.Entity("YourLocalization.Domain.Model.User", b =>

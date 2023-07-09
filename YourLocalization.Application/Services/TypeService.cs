@@ -1,12 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using YourLocalization.Application.Interfaces;
-using YourLocalization.Application.ViewModels.Point;
 using YourLocalization.Application.ViewModels.Type;
 using YourLocalization.Domain.Interface;
 using Type = YourLocalization.Domain.Model.Type;
@@ -36,12 +30,11 @@ namespace YourLocalization.Application.Services
             _typeRepo.DeleteType(id);
         }
 
-        public List<Type> GetAllTypesToList()
+        public List<Type> GetAllTypesToDropDownList()
         {
-            List<Type> allTypes = _typeRepo.GetAllTypes().ToList();
+            List<Type> allTypes = _typeRepo.GetAllTypes().OrderBy(t => t.Name).ToList();  
             return allTypes;
         }
-
 
         public ListTypeForListVm GetAllTypeForList(int pageSize, int pageNo, string searchString)
         {
@@ -70,9 +63,6 @@ namespace YourLocalization.Application.Services
         {
             Type type = _mapper.Map<Type>(updateTypeVm);
             _typeRepo.UpdateType(type);
-
         }
-
-        
     }
 }

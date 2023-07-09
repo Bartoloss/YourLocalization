@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using YourLocalization.Application.Mapping;
+using YourLocalization.Application.ViewModels.Type;
 
 namespace YourLocalization.Application.ViewModels.Point
 {
@@ -7,7 +8,8 @@ namespace YourLocalization.Application.ViewModels.Point
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public string TypeId { get; set; }
+        public int TypeId { get; set; }
+        public TypeDetailsVM TypeDetails { get; set; }
 
         public void Mapping(Profile profile)
         {

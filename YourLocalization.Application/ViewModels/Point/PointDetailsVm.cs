@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using YourLocalization.Application.Mapping;
+using YourLocalization.Application.ViewModels.Type;
 
 namespace YourLocalization.Application.ViewModels.Point
 {
@@ -13,7 +14,7 @@ namespace YourLocalization.Application.ViewModels.Point
         public string ZipCode { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
-        public List<YourLocalization.Domain.Model.Type> Types { get; set; }
+        public TypeDetailsVM TypeDetails { get; set; }
 
         public void Mapping(Profile profile)
         {

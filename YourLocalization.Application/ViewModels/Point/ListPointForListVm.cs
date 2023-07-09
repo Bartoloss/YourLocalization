@@ -1,4 +1,6 @@
-﻿namespace YourLocalization.Application.ViewModels.Point
+﻿using YourLocalization.Application.ViewModels.Type;
+
+namespace YourLocalization.Application.ViewModels.Point
 {
     public class ListPointForListVm
     {
@@ -7,5 +9,6 @@
         public int PageSize { get; set; }
         public string SearchString { get; set; }
         public int Count { get; set; }
+
     }
 }

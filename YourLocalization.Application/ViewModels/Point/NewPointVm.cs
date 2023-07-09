@@ -1,11 +1,6 @@
 ﻿using AutoMapper;
 using FluentValidation;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using System.ComponentModel.DataAnnotations.Schema;
 using YourLocalization.Application.Mapping;
-using YourLocalization.Application.Services;
-using YourLocalization.Application.ViewModels.Type;
-using YourLocalization.Domain.Model;
 
 namespace YourLocalization.Application.ViewModels.Point
 {
@@ -22,11 +17,9 @@ namespace YourLocalization.Application.ViewModels.Point
         public string Country { get; set; }
         public List<YourLocalization.Domain.Model.Type> Types { get; set; }
 
-
         public void Mapping(Profile profile)
         {
             profile.CreateMap<NewPointVm, YourLocalization.Domain.Model.Point>().ReverseMap();
-
         }
     }
 

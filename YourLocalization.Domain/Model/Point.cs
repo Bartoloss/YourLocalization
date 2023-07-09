@@ -12,4 +12,3 @@
         public ICollection<PointTag> PointTags { get; set; }
     }
 }
-

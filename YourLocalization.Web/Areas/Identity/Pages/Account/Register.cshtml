@@ -30,17 +30,17 @@
                     <input type="hidden" asp-for="Input.IsCustomer" value="true">
                 </div>        
                 <div class="form-floating">
-                    <input asp-for="Input.Company" class="form-control" autocomplete="company" aria-required="true" />
+                    <input asp-for="Input.Company" class="form-control mt-2" autocomplete="company" aria-required="true" />
                     <label asp-for="Input.Company"></label>
                     <span asp-validation-for="Input.Company" class="text-danger"></span>
                 </div>
                 <div class="form-floating">
-                    <input asp-for="Input.FirstName" class="form-control" autocomplete="firstname" aria-required="true" />
+                    <input asp-for="Input.FirstName" class="form-control mt-2" autocomplete="firstname" aria-required="true" />
                     <label asp-for="Input.FirstName"></label>
                     <span asp-validation-for="Input.FirstName" class="text-danger"></span>
                 </div>
                 <div class="form-floating">
-                    <input asp-for="Input.LastName" class="form-control" autocomplete="lastname" aria-required="true" />
+                    <input asp-for="Input.LastName" class="form-control mt-2" autocomplete="lastname" aria-required="true" />
                     <label asp-for="Input.LastName"></label>
                     <span asp-validation-for="Input.LastName" class="text-danger"></span>
                 </div>
@@ -52,32 +52,32 @@
                 </div>
             }
             <div class="form-floating">
-                <input asp-for="Input.UserName" class="form-control" autocomplete="username" aria-required="true" />
+                <input asp-for="Input.UserName" class="form-control mt-2" autocomplete="username" aria-required="true" />
                 <label asp-for="Input.UserName"></label>
                 <span asp-validation-for="Input.UserName" class="text-danger"></span>
             </div>
             <div class="form-floating">
-                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
+                <input asp-for="Input.Email" class="form-control mt-2" autocomplete="username" aria-required="true" />
                 <label asp-for="Input.Email"></label>
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
             <div class="form-floating">
-                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
+                <input asp-for="Input.Password" class="form-control mt-2" autocomplete="new-password" aria-required="true" />
                 <label asp-for="Input.Password"></label>
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
             <div class="form-floating">
-                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
+                <input asp-for="Input.ConfirmPassword" class="form-control mt-2" autocomplete="new-password" aria-required="true" />
                 <label asp-for="Input.ConfirmPassword"></label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
             @if (query_string_value == "false")
             {
-                <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+                <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary mt-2">Register</button>
             }
             else if (query_string_value == "true")
             {
-                <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-warning">Register</button>
+                <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-warning mt-2">Register</button>
             }
         </form>
     </div>

@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using YourLocalization.Application.Interfaces;
 using YourLocalization.Web.Models;
 
 namespace YourLocalization.Web.Controllers

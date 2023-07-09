@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Drawing.Printing;
 using YourLocalization.Application.Interfaces;
-using YourLocalization.Application.Services;
 using YourLocalization.Application.ViewModels.Type;
 
 namespace YourLocalization.Web.Controllers
@@ -15,7 +12,6 @@ namespace YourLocalization.Web.Controllers
         {
             _typeService = typeService;
         }
-
 
         [HttpGet("types")]
         public IActionResult Index()
@@ -66,7 +62,7 @@ namespace YourLocalization.Web.Controllers
             _typeService.UpdateType(model);
             return RedirectToAction("Index");
         }
-        
+
         public IActionResult DeleteType(int id)
         {
             _typeService.DeleteType(id);

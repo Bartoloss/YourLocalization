@@ -12,6 +12,7 @@ namespace YourLocalization.Infrastructure
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IPointRepository, PointRepository>();
             services.AddTransient<ITypeRepository, TypeRepository>();
+            services.AddTransient<ISubtypeRepository, SubtypeRepository>();
             return services;
         }
     }

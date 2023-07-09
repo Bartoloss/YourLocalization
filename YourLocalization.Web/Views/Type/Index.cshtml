@@ -4,16 +4,14 @@
     ViewData["Title"] = "List of types";
 }
 
-<h1>List of Types</h1>
+<h1>All Types</h1>
 
-<p>
-    <a asp-action="AddType">Create New</a>
-</p>
+<a class="btn btn-primary mt-2 mb-2" asp-action="AddType">Add new type</a>
 
 <form asp-action="Index" asp-controller="Type" method="post">
     <div class="row">
-        <input type="text" asp-for="SearchString" name="searchString" id="searchString" />
-        <input type="submit" value="Search" />
+        <input type="text" asp-for="SearchString" class="form-control" name="searchString" id="searchString" />
+        <input type="submit" value="Search" class="btn btn-primary mt-2" />
     </div>
     <div class="row">
 

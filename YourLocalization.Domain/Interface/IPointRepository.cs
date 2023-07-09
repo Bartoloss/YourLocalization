@@ -22,5 +22,7 @@ namespace YourLocalization.Domain.Interface
         IQueryable<Type> GetAllTypes();
 
         void UpdatePoint(Point point);
+
+        Type GetTypeForPoint(int pointId);
     }
 }

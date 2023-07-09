@@ -16,32 +16,62 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                @if (SignInManager.IsSignedIn(User))
-                {
-                <a class="navbar-brand text-light" asp-area="" asp-controller="Home" asp-action="Index">YourLocalization</a>
-                }
-                else
-                {
-                    <a class="navbar-brand text-light" asp-area="" asp-controller="Home" asp-action="SelectRegister">YourLocalization</a>
-                }
+
+                <a class="navbar-brand text-light" asp-area="" asp-controller="Home" asp-action="SelectRegister">YourLocalization</a>
+                
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        @if (SignInManager.IsSignedIn(User))
+                        @if (User.IsInRole("Admin") || User.IsInRole("User"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="SelectRegister">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Points
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" asp-controller="Point" asp-action="AddPoint">Add new point</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Point" asp-action="ViewUserPoints">My points</a></li>
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <li><a class="dropdown-item" asp-controller="Point" asp-action="Index">All points</a></li>
+                                    }
+                                </ul>
                             </li>
                         }
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        @if (User.IsInRole("Admin"))
+                        {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Types
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-controller="Type" asp-action="AddType">Add new type</a></li>
+                                <li><a class="dropdown-item" asp-controller="Type" asp-action="Index">All types</a></li>
+                                
+                            </ul>
                         </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Subtypes
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" asp-controller="Subtype" asp-action="AddSubtype">Add new subtype</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Subtype" asp-action="Index">All subtypes</a></li>
+
+                                </ul>
+                            </li>
+                        }
                     </ul>
+                    
                     <partial name="_LoginPartial" />
                 </div>
+                
             </div>
         </nav>
     </header>

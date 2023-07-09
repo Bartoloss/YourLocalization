@@ -17,10 +17,16 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="CreatedBy" class="control-label"></label>
-                <input asp-for="CreatedBy" class="form-control" />
-                <span asp-validation-for="CreatedBy" class="text-danger"></span>
+                <input type="hidden" asp-for="CreatedBy" value="@User.Identity.Name" />
             </div>
+            <label asp-for="TypeId" class="control-label"></label>
+            <select class="form-select" asp-for="TypeId" aria-label="Default select example">
+                <option selected>Choose type of point</option>
+                @foreach (var item in Model.Types)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
@@ -51,26 +57,20 @@
                 <input asp-for="Country" class="form-control" />
                 <span asp-validation-for="Country" class="text-danger"></span>
             </div>
-            <label asp-for="TypeId" class="control-label"></label>
-            <select class="form-select" asp-for="TypeId" aria-label="Default select example">
-                <option selected>Choose type of point</option>
-                @foreach (var item in Model.Types)
-                {
-                    <option value="@item.Id">@item.Name</option>
-                }
-            </select>
-
+            <div class="row">
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                    <input type="submit" value="Create" class="w-100 btn btn-primary mt-2" />
+                </div>
             </div>
-
+            <div class="row">
+                <div class="form-group">
+            <a class="w-100 btn btn-primary mt-2" asp-action="Index">Back to List</a>
+            </div>
+            </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

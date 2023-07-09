@@ -1,5 +1,4 @@
 ﻿using YourLocalization.Application.ViewModels.Point;
-using YourLocalization.Domain.Model;
 
 namespace YourLocalization.Application.Interfaces
 {
