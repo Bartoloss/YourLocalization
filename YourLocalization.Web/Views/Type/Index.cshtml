@@ -38,8 +38,10 @@
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "EditType", new { id=item.Id  }) |
-                            @Html.ActionLink("Delete", "DeleteType", new { id=item.Id })
+                            <input class="btn btn-outline-primary" type="button" value="Edit" onclick="location.href='@Url.Action("EditType", new { id = item.Id })'"> </input>
+
+                            <input class="btn btn-outline-primary" type="button" value="Delete" onclick="location.href='@Url.Action("DeleteType", new { id = item.Id })'"> </input>
+                            
                         </td>
                     </tr>
                 }

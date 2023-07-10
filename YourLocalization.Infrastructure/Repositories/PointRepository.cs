@@ -15,7 +15,7 @@ namespace YourLocalization.Infrastructure.Repositoriees
 
         public void DeletePoint(int pointId)
         {
-            Point point = _context.Points.Find(pointId);
+            Point? point = _context.Points.Find(pointId);
             if (point != null)
             {
                 _context.Points.Remove(point);

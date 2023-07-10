@@ -1,4 +1,5 @@
 ﻿using YourLocalization.Domain.Interface;
+using YourLocalization.Domain.Model;
 
 namespace YourLocalization.Infrastructure.Repositories
 {
@@ -36,6 +37,11 @@ namespace YourLocalization.Infrastructure.Repositories
         public Domain.Model.Subtype? GetSubtypeById(int subtypeId)
         {
             return _context.Subtypes.FirstOrDefault(t => t.Id == subtypeId);
+        }
+
+        public YourLocalization.Domain.Model.Type? GetTypeForSubtype(int subtypeTypeId)
+        {
+            return _context.Types.FirstOrDefault(i => i.Id == subtypeTypeId);
         }
 
         public void UpdateSubtype(YourLocalization.Domain.Model.Subtype subtype)

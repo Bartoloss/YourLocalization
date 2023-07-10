@@ -9,7 +9,7 @@ namespace YourLocalization.Application.ViewModels.Subtype
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public string TypeId { get; set; }
+        public int TypeId { get; set; }
         public TypeDetailsVM TypeDetails { get; set; }
 
 

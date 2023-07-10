@@ -61,8 +61,9 @@ namespace YourLocalization.Web.Controllers
         [HttpGet]
         public IActionResult EditSubtype(int id)
         {
-            var type = _subtypeService.GetSubtypeForEdit(id);
-            return View(type);
+            NewSubtypeVm editSubtypeVm = _subtypeService.GetSubtypeForEdit(id);
+            editSubtypeVm.Types = _typeService.GetAllTypesToDropDownList();
+            return View(editSubtypeVm);
         }
 
         [HttpPost]

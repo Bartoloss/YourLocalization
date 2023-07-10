@@ -39,6 +39,11 @@ namespace YourLocalization.Application.Services
         {
             List<SubtypeForListVm> subtypes = _subtypeRepo.GetAllSubtypes().Where(p => p.Name.StartsWith(searchString))
                .ProjectTo<SubtypeForListVm>(_mapper.ConfigurationProvider).ToList();
+            foreach (var item in subtypes)
+            {
+                var subtype = _subtypeRepo.GetTypeForSubtype(item.TypeId);
+                item.TypeDetails = _mapper.Map<TypeDetailsVM>(subtype);
+            }
             List<SubtypeForListVm> subtypesToShow = subtypes.Skip(pageSize * (pageNo - 1)).Take(pageSize).ToList();
             ListSubtypeForListVm subtypesForList = new ListSubtypeForListVm()
             {

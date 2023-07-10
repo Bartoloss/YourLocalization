@@ -44,8 +44,9 @@
                             @Html.DisplayFor(modelItem => item.TypeDetails.Name)
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "EditSubtype", new { id=item.Id  }) |
-                            @Html.ActionLink("Delete", "DeleteSubtype", new { id=item.Id })
+                            <input class="btn btn-outline-primary" type="button" value="Edit" onclick="location.href='@Url.Action("EditSubtype", new { id = item.Id })'"> </input>
+
+                            <input class="btn btn-outline-primary" type="button" value="Delete" onclick="location.href='@Url.Action("DeleteSubtype", new { id = item.Id })'"> </input>
                         </td>
                     </tr>
                 }

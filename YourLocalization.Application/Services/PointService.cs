@@ -38,8 +38,8 @@ namespace YourLocalization.Application.Services
                .ProjectTo<PointForListVm>(_mapper.ConfigurationProvider).ToList();
             foreach (var item in points)
             {
-                var pointType = _pointRepo.GetTypeForPoint(item.TypeId);
-                item.TypeDetails = _mapper.Map<TypeDetailsVM>(pointType);
+                var point = _pointRepo.GetTypeForPoint(item.TypeId);
+                item.TypeDetails = _mapper.Map<TypeDetailsVM>(point);
             }
             List<PointForListVm> pointsToShow = points.Skip(pageSize * (pageNo - 1)).Take(pageSize).ToList();
             ListPointForListVm pointsForList = new ListPointForListVm()
