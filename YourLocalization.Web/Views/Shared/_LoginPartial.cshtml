@@ -6,9 +6,16 @@
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
-    <li class="nav-item">
-            <a class="btn btn-success" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
-    </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-light btn btn-success mr-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" title="Manage">
+                Hello @User.Identity?.Name!
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index">Manage account</a></li>
+                <li><a class="dropdown-item" asp-controller="Point" asp-action="ViewUserPoints">My addresses</a></li>
+            </ul>
+        </li>
+
         <h2>&nbsp</h2>
     <li class="nav-item">
         <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Logout", "Home", new { area = "" })">
