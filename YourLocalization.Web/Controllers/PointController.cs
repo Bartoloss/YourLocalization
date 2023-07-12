@@ -9,11 +9,13 @@ namespace YourLocalization.Web.Controllers
     {
         private readonly IPointService _pointService;
         private readonly ITypeService _typeService;
+        private readonly ISubtypeService _subtypeService;
 
-        public PointController(IPointService pointService, ITypeService typeService)
+        public PointController(IPointService pointService, ITypeService typeService, ISubtypeService subtypeService)
         {
             _pointService = pointService;
             _typeService = typeService;
+            _subtypeService = subtypeService;
         }
 
         [Authorize(Roles = "Admin")]
@@ -73,6 +75,7 @@ namespace YourLocalization.Web.Controllers
         {
             var newPointVm = new NewPointVm();
             newPointVm.Types = _typeService.GetAllTypesToDropDownList();
+            newPointVm.Subtypes = _subtypeService.GetAllSubtypesToDropDownList();
             return View(newPointVm);
         }
 

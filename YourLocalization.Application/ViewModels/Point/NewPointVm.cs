@@ -10,12 +10,14 @@ namespace YourLocalization.Application.ViewModels.Point
         public string CreatedBy { get; set; }
         public string Name { get; set; }
         public int TypeId { get; set; }
+        public int SubtypeId { get; set; }
         public string Street { get; set; }
         public string BuildingNumber { get; set; }
         public string ZipCode { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
         public List<YourLocalization.Domain.Model.Type> Types { get; set; }
+        public List<YourLocalization.Domain.Model.Subtype> Subtypes { get; set; }
 
         public void Mapping(Profile profile)
         {

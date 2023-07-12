@@ -7,6 +7,7 @@
     ViewData["Title"] = "AddPoint";
 }
 
+
 <h1>Add new point</h1>
 
 <h4>Please fill in the fields.</h4>
@@ -19,14 +20,26 @@
             <div class="form-group">
                 <input type="hidden" asp-for="CreatedBy" value="@User.Identity.Name" />
             </div>
-            <label asp-for="TypeId" class="control-label"></label>
-            <select class="form-select" asp-for="TypeId" aria-label="Default select example">
+
+            @*<label asp-for="TypeId" class="control-label"></label>
+            <select id="types" class="form-select" asp-for="TypeId" aria-label="Default select example">
                 <option selected>Choose type of point</option>
                 @foreach (var item in Model.Types)
                 {
                     <option value="@item.Id">@item.Name</option>
                 }
             </select>
+
+            <label asp-for="SubtypeId" class="control-label"></label>
+            <select id="subtypes" class="form-select" asp-for="SubtypeId" aria-label="Default select example">
+                <option selected>Choose subtype of point</option>
+                @foreach (var item in Model.Subtypes)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>*@
+
+
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
@@ -72,6 +85,58 @@
 </div>
 
 
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script>
+    $(document).ready(function () {
+        var typeList = []; //vehicleList
+        var subtypesList = []; //brandsList
+
+
+        // store brands options to variable on document ready
+        $("#subtypes option").each(function () {
+            subtypesList.push($(this));
+        });
+
+        // clear brands select to hide option fields
+        $("#subtypes").html("");
+
+        // vehicle select on change, refill brands with matching data-vehicle value
+        $("#type").change(function () {
+
+            var subtypesSelect = $("#subtypes");
+            var typeValue = $(this).val();
+
+            subtypesSelect.html("");
+            subtypesSelect.show();
+
+            $(subtypesList).each(function () {
+                if ($(this).data("type") == typeValue) {
+                    $(subtypesSelect).append($(this));
+                }
+            });
+        });
+    });
+</script>
+
+
+    <h5>Select a Type</h5>
+    <select id="type">
+        <option>Motorcycle</option>
+        <option>Car</option>
+    </select>
+
+    <h5>Choose Subtypes</h5>
+    <select id="subtypes" display:none>
+        <option data-type="Motorcycle">Yamaha</option>
+        <option data-type="Motorcycle">Kawasaki</option>
+        <option data-type="Car">Mercedes Benz</option>
+        <option data-type="Car">BMW</option>
+        <option data-type="Car">Audi</option>
+    </select>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
 }

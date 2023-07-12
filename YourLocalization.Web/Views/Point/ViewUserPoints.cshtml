@@ -46,9 +46,11 @@
                 @Html.DisplayFor(modelItem => item.TypeDetails.Name)
             </td>
             <td>
-                            @Html.ActionLink("Edit", "EditPoint", new { id=item.Id  }) |
-                            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-                            @Html.ActionLink("Delete", "DeletePoint", new { id=item.Id })
+                <input class="btn btn-outline-primary btn-sm" type="button" value="Edit" onclick="location.href='@Url.Action("EditPoint", new { id = item.Id })'"> </input>
+
+                <input class="btn btn-outline-primary btn-sm" type="button" value="Details" onclick="location.href='@Url.Action("Details", new { id = item.Id })'"> </input>
+
+                <input class="btn btn-outline-primary btn-sm" type="button" value="Delete" onclick="location.href='@Url.Action("DeletePoint", new { id = item.Id })'"> </input>
             </td>
         </tr>
 }

@@ -46,11 +46,11 @@
                 @Html.DisplayFor(modelItem => item.TypeDetails.Name)
             </td>
             <td>
-                <input class="btn btn-outline-primary" type="button" value="Edit" onclick="location.href='@Url.Action("EditPoint", new { id = item.Id })'"> </input>
+                <input class="btn btn-outline-primary btn-sm" type="button" value="Edit" onclick="location.href='@Url.Action("EditPoint", new { id = item.Id })'"> </input>
 
-                <input class="btn btn-outline-primary" type="button" value="Details" onclick="location.href='@Url.Action("Details", new { id = item.Id })'"> </input>
-                        
-                <input class="btn btn-outline-primary" type="button" value="Delete" onclick="location.href='@Url.Action("DeletePoint", new { id = item.Id })'"> </input>
+                <input class="btn btn-outline-primary btn-sm" type="button" value="Details" onclick="location.href='@Url.Action("Details", new { id = item.Id })'"> </input>
+
+                <input class="btn btn-outline-primary btn-sm" type="button" value="Delete" onclick="location.href='@Url.Action("DeletePoint", new { id = item.Id })'"> </input>
 
             </td>
         </tr>
@@ -67,14 +67,14 @@
                 @for(int i = 1; i <= Math.Ceiling(Model.Count / (double)Model.PageSize); i++)
                 {
                     <td>
-                    @if (i != Model.CurrentPage)
-                    {
-                        <a href="javascript:PagerClick(@i)">@i</a>
-                    }
-                    else
-                    {
-                        <span>@i</span>
-                    }
+                        @if (i != Model.CurrentPage)
+                        {
+                            <a class="btn btn-outline-primary" href="javascript:PagerClick(@i)">@i</a>
+                        }
+                        else
+                        {
+                            <button class="btn btn-primary" value="@i">@i</button>
+                        }
                     </td>
                 }
             </tr>
@@ -90,7 +90,7 @@
      function PagerClick(index)
      {
         document.getElementById("pageNo").value = index;
-        document.forms[0].submit();
+        document.forms[1].submit();
      }
   </script>
 }

@@ -8,7 +8,7 @@ namespace YourLocalization.Application.Interfaces
     {
         ListSubtypeForListVm GetAllSubtypeForList(int pageSize, int pageNo, string searchString);
 
-        public List<Subtype> GetAllTypesToDropDownList();
+        public List<Subtype> GetAllSubtypesToDropDownList();
 
         int AddSubtype(NewSubtypeVm subtype);
         

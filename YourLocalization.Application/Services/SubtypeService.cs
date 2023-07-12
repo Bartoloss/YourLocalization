@@ -56,7 +56,7 @@ namespace YourLocalization.Application.Services
             return subtypesForList;
         }
 
-        public List<Subtype> GetAllTypesToDropDownList()
+        public List<Subtype> GetAllSubtypesToDropDownList()
         {
             List<Subtype> allSubtypes = _subtypeRepo.GetAllSubtypes().OrderBy(t => t.Name).ToList();
             return allSubtypes;
