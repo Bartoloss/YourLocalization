@@ -7,7 +7,7 @@ namespace YourLocalization.Infrastructure
 {
     public class Context : IdentityDbContext<User>
     {
-        public DbSet<AddressDetail> AddressDetails { get; set; }
+        public DbSet<Address> AddressDetails { get; set; }
         public DbSet<Point> Points { get; set; }
         public DbSet<PointTag> PointTag { get; set; }
         public DbSet<Tag> Tags { get; set; }

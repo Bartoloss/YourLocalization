@@ -37,9 +37,8 @@
                 {
                     <option value="@item.Id">@item.Name</option>
                 }
-            </select>*@
-
-
+            </select>
+*@
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
@@ -84,13 +83,11 @@
     </div>
 </div>
 
-
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="/lib//jquery/dist/jquery.js" type="text/javascript"></script>
 <script>
     $(document).ready(function () {
-        var typeList = []; //vehicleList
-        var subtypesList = []; //brandsList
-
+        var typesList = [];
+        var subtypesList = [];
 
         // store brands options to variable on document ready
         $("#subtypes option").each(function () {
@@ -101,16 +98,16 @@
         $("#subtypes").html("");
 
         // vehicle select on change, refill brands with matching data-vehicle value
-        $("#type").change(function () {
+        $("#types).change(function () {
 
             var subtypesSelect = $("#subtypes");
-            var typeValue = $(this).val();
+            var typesValue = $(this).val();
 
             subtypesSelect.html("");
             subtypesSelect.show();
 
             $(subtypesList).each(function () {
-                if ($(this).data("type") == typeValue) {
+                if ($(this).data("types") == typesValue) {
                     $(subtypesSelect).append($(this));
                 }
             });
@@ -118,22 +115,81 @@
     });
 </script>
 
-
+<html>
+<body>
     <h5>Select a Type</h5>
-    <select id="type">
+    <select id="types">
+        @foreach (var type in @Model.Types)
+        {
+            <option>@type.Name</option>
+        }
+    </select>
+
+    <h5>Choose Subtype</h5>
+    <select id="subtypes">
+        @foreach (var subtype in @Model.Subtypes)
+        {
+            <option data-types="@subtype.TypeId">@subtype.Name</option>
+        }
+    </select>
+<script src="/lib//jquery/dist/jquery.js" type="text/javascript"></script>
+</body>
+</html>
+
+<script src="/lib//jquery/dist/jquery.js" type="text/javascript"></script>
+<script>
+$(document).ready(function(){
+  var vehicleList = [];
+  var brandsList = [];
+
+  // store brands options to variable on document ready
+  $("#brands option").each(function(){
+    brandsList.push($(this));
+  });
+
+  // clear brands select to hide option fields
+  $("#brands").html("");
+
+  // vehicle select on change, refill brands with matching data-vehicle value
+  $("#vehicle").change(function(){
+
+    var brandsSelect = $("#brands");
+    var vehicleValue = $(this).val();
+
+    brandsSelect.html("");
+    brandsSelect.show();
+
+    $(brandsList).each(function(){
+      if($(this).data("vehicle") == vehicleValue){
+        $(brandsSelect).append($(this));
+      }
+    });
+  });
+});
+</script>
+
+
+<html>
+<body>
+    <h5>Select a Vehicle Type</h5>
+    <select id="vehicle">
         <option>Motorcycle</option>
         <option>Car</option>
     </select>
 
-    <h5>Choose Subtypes</h5>
-    <select id="subtypes" display:none>
-        <option data-type="Motorcycle">Yamaha</option>
-        <option data-type="Motorcycle">Kawasaki</option>
-        <option data-type="Car">Mercedes Benz</option>
-        <option data-type="Car">BMW</option>
-        <option data-type="Car">Audi</option>
+    <h5>Choose Brand</h5>
+    <select id="brands">
+        <option data-vehicle="Motorcycle">Yamaha</option>
+        <option data-vehicle="Motorcycle">Kawasaki</option>
+        <option data-vehicle="Car">Mercedes Benz</option>
+        <option data-vehicle="Car">BMW</option>
+        <option data-vehicle="Car">Audi</option>
     </select>
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="/lib//jquery/dist/jquery.js" type="text/javascript"></script>
+</body>
+</html>
+
+
 
 
 @section Scripts {

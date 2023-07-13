@@ -12,6 +12,6 @@ namespace YourLocalization.Domain.Model
         public bool IsCustomer { get; set; }
         public int? AmountOfAddresses { get; set; }
 
-        public virtual ICollection<AddressDetail> Addresses { get; set; }
+        public virtual ICollection<Address> Addresses { get; set; }
     }
 }

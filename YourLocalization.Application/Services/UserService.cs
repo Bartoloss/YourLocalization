@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
 using YourLocalization.Application.Interfaces;
 using YourLocalization.Application.ViewModels.User;
 using YourLocalization.Domain.Interface;
@@ -11,11 +13,13 @@ namespace YourLocalization.Application.Services
     {
         private readonly IUserRepository _userRepo;
         private readonly IMapper _mapper;
+        private readonly IHttpContextAccessor _contextAccessor;
 
-        public UserService(IUserRepository userRepo, IMapper mapper)
+        public UserService(IUserRepository userRepo, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
             _userRepo = userRepo;
             _mapper = mapper;
+            _contextAccessor = httpContextAccessor;
         }
 
         public string AddUser(NewUserVm newUserVm)
@@ -49,7 +53,7 @@ namespace YourLocalization.Application.Services
 
             userVm.Addresses = new List<AddressForListVm>();
 
-            foreach (AddressDetail address in user.Addresses)
+            foreach (Address address in user.Addresses)
             {
                 AddressForListVm newAddress = new AddressForListVm()
                 {
@@ -67,6 +71,11 @@ namespace YourLocalization.Application.Services
             userVm.AmountOfAddresses = userVm.Addresses.Count;
 
             return userVm;
+        }
+
+        public string GetUserId()
+        {
+            return _contextAccessor.HttpContext.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         }
     }
 }

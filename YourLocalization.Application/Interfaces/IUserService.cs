@@ -9,5 +9,7 @@ namespace YourLocalization.Application.Interfaces
         string AddUser(NewUserVm user);
 
         UserDetailsVm GetUserDetails(string customerId);
+
+        string GetUserId();
     }
 }

@@ -1,0 +1,104 @@
+﻿@model YourLocalization.Application.ViewModels.Point.NewPointVm
+@using Microsoft.AspNetCore.Identity
+@using YourLocalization.Domain.Model
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+@{
+    ViewData["Title"] = "AddPoint";
+}
+
+
+<h1>Add new point</h1>
+
+<h4>Please fill in the fields.</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddPoint">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            
+
+
+
+
+
+
+
+
+
+
+
+            DODAĆ ŻE MOŻNA WYBRAĆ JAKI TYP ADRESU (DOM,PRACA) UZYTKOWNIK CHCEE UZYPELNIC !!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Street" class="control-label"></label>
+                <input asp-for="Street" class="form-control" />
+                <span asp-validation-for="Street" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BuildingNumber" class="control-label"></label>
+                <input asp-for="BuildingNumber" class="form-control" />
+                <span asp-validation-for="BuildingNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ZipCode" class="control-label"></label>
+                <input asp-for="ZipCode" class="form-control" />
+                <span asp-validation-for="ZipCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Country" class="control-label"></label>
+                <input asp-for="Country" class="form-control" />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <input type="submit" value="Create" class="w-100 btn btn-primary mt-2" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <a class="w-100 btn btn-primary mt-2" asp-action="Index">Back to List</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+}
+
